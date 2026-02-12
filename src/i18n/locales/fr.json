@@ -1,0 +1,195 @@
+{
+  "footer": {
+    "brand": {
+      "name": "ABS Immo Services",
+      "tagline": "Conseil immobilier",
+      "description": "Cabinet de conseil spécialisé dans la structuration, la sécurisation et la valorisation d’actifs immobiliers à forte valeur stratégique.",
+      "region": "Sénégal · Afrique de l’Ouest"
+    },
+    "positioning": {
+      "title": "Positionnement",
+      "text": "Nous n’opérons pas comme une agence classique. Chaque mission est traitée comme un mandat de conseil, avec une approche confidentielle et long terme."
+    },
+    "availability": {
+      "title": "Disponibilité",
+      "week": "Lundi – Vendredi",
+      "weekHours": "09h – 18h",
+      "saturday": "Samedi",
+      "saturdayHours": "09h – 14h",
+      "sunday": "Dimanche",
+      "closed": "Fermé"
+    },
+    "contact": {
+      "title": "Contact",
+      "call": "Appeler un conseiller",
+      "location": "Keur Massar, Dakar"
+    },
+    "bottom": {
+      "rights": "Tous droits réservés",
+      "signature": "Conseil & Investissements"
+    }
+  },
+   "about": {
+    "hero": {
+      "kicker": "Notre Expertise",
+      "title": "L’excellence immobilière au service de vos ambitions",
+      "subtitle": "ABS Immo Services accompagne particuliers et investisseurs dans la réalisation de projets immobiliers d’exception au Sénégal."
+    },
+    "positioning": {
+      "kicker": "Notre Positionnement",
+      "title": "Une vision stratégique et durable de l’immobilier",
+      "p1": "Nous sélectionnons des biens à fort potentiel dans les zones les plus attractives.",
+      "p2": "Notre approche repose sur la transparence, la rigueur juridique et l’accompagnement personnalisé.",
+      "p3": "Chaque projet est traité avec exigence et confidentialité."
+    },
+    "stats": {
+      "years": "Années d’expérience",
+      "assets": "Biens commercialisés",
+      "clients": "Clients accompagnés",
+      "zone": "Zone d’intervention",
+      "zoneValue": "Sénégal"
+    },
+    "values": {
+      "title": "Nos Valeurs",
+      "v1": {
+        "title": "Excellence",
+        "text": "Un niveau de qualité élevé dans chaque transaction."
+      },
+      "v2": {
+        "title": "Sécurité",
+        "text": "Des procédures juridiques fiables et transparentes."
+      },
+      "v3": {
+        "title": "Performance",
+        "text": "Maximiser la valeur de votre investissement."
+      },
+      "v4": {
+        "title": "Relation Humaine",
+        "text": "Un accompagnement personnalisé et durable."
+      }
+    },
+    "cta": {
+      "title": "Discutons de votre projet",
+      "text": "Notre équipe est disponible pour vous conseiller et vous accompagner.",
+      "button": "PRENDRE RENDEZ-VOUS",
+      "signature": "ABS IMMO SERVICES — CONFIANCE & EXCELLENCE"
+    }
+  },
+  "contact": {
+    "hero": {
+      "tagline": "Contact Premium",
+      "title1": "Parlons de votre",
+      "title2": "projet immobilier",
+      "description": "Notre équipe vous accompagne avec expertise, discrétion et excellence pour concrétiser votre vision."
+    },
+    "form": {
+      "buy": "Acheter",
+      "sell": "Vendre",
+      "invest": "Investir",
+      "name": "Nom complet",
+      "email": "Adresse email",
+      "phone": "Téléphone",
+      "message": "Décrivez votre projet",
+      "button": "Envoyer la demande",
+      "security": "Vos informations sont protégées et confidentielles."
+    },
+    "sidebar": {
+      "direct": "Contact Direct"
+    }
+  },
+   "home": {
+    "hero": {
+      "tagline": "Maison de conseil immobilier",
+      "title1": "Immobilier",
+      "title2": "structuré comme un actif financier",
+      "description": "ABS Immo Services accompagne investisseurs privés, family offices et entreprises dans la structuration, la sécurisation et la valorisation d’actifs immobiliers au Sénégal."
+    },
+    "stats": {
+      "assets": "Actifs accompagnés",
+      "clients": "Clients privés",
+      "experience": "Années d’expertise",
+      "zone": "Zone",
+      "zoneValue": "Sénégal"
+    },
+    "method": {
+      "analysis": {
+        "title": "Analyse patrimoniale",
+        "text": "Lecture stratégique de chaque opération."
+      },
+      "security": {
+        "title": "Sécurisation juridique",
+        "text": "Conformité, titres, structuration."
+      },
+      "execution": {
+        "title": "Exécution maîtrisée",
+        "text": "Accompagnement discret jusqu’à finalisation."
+      }
+    },
+    "opportunities": {
+      "label": "Accès restreint",
+      "title": "Opportunités sélectionnées",
+      "cta": "Catalogue complet",
+      "price": "Valeur estimée"
+    },
+    "cta": {
+      "title": "Accéder à une discussion confidentielle",
+      "text": "Nos échanges sont strictement privés. Chaque demande est analysée personnellement par un conseiller senior.",
+      "button": "Initier un échange privé",
+      "footer": "ABS IMMO SERVICES · CONSEIL & STRUCTURATION IMMOBILIÈRE"
+    }
+  },
+  "properties": {
+    "hero": {
+      "label": "Portefeuille privé",
+      "titleLine1": "Opportunités",
+      "titleLine2": "immobilières sélectionnées",
+      "description": "Une sélection rigoureuse d’actifs analysés, structurés et alignés avec les exigences des investisseurs privés et institutionnels au Sénégal.",
+      "count": "OPPORTUNITÉ",
+      "countPlural": "OPPORTUNITÉS"
+    },
+    "filters": {
+      "all": "Tous",
+      "villa": "Villa",
+      "appartement": "Appartement",
+      "terrain": "Terrain",
+      "bureau": "Bureau",
+      "budgetAll": "Tous budgets",
+      "budgetLow": "< 300M",
+      "budgetMedium": "300–600M",
+      "budgetHigh": "> 600M"
+    },
+    "empty": {
+      "title": "Aucune opportunité ne correspond à ces critères.",
+      "reset": "Réinitialiser les filtres"
+    },
+    "card": {
+      "estimatedValue": "Valeur estimée",
+      "seeFile": "VOIR LE DOSSIER →"
+    }
+  },
+  "propertyDetail": {
+    "back": "Retour",
+    "backToList": "Retour aux biens",
+    "price": "Prix",
+    "presentation": "Présentation du bien",
+    "features": "Caractéristiques clés",
+    "metrics": {
+      "bedrooms": "Chambres",
+      "bathrooms": "Salles de bain",
+      "surface": "Surface"
+    },
+    "whatsapp": "WhatsApp direct",
+    "call": "Appel téléphonique",
+    "requestInfo": "Demander des informations",
+    "whatsappMessage": "Bonjour, je suis intéressé par le bien \"{{title}}\" ({{price}}M FCFA)"
+  },
+   "navbar": {
+    "tagline": "Agence Immobilière & Services",
+    "menu": {
+      "home": "Accueil",
+      "properties": "Propriétés",
+      "about": "À propos",
+      "contact": "Contact"
+    }
+  }
+}

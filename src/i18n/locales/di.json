@@ -1,0 +1,195 @@
+{
+  "footer": {
+    "brand": {
+      "name": "ABS Immo Services",
+      "tagline": "Eteyul immobilier",
+      "description": "Cabinet bu nafa ndimbal ngir taxawal, aar ak yokk valeur bu biens immobiliers yu am solo.",
+      "region": "Senegaal · Afrik sowwu-jant"
+    },
+    "positioning": {
+      "title": "Eteyul bi ñu jëfandikoo",
+      "text": "Duñu dox ni agence bu kawaida. Benn liggéey bu nekk, ñu koy jëfandikoo ni ndimbal bu sutura ak bu yagg."
+    },
+    "availability": {
+      "title": "Jamono jëfandikoo",
+      "week": "Altine – Àjjuma",
+      "weekHours": "09h – 18h",
+      "saturday": "Àjjuma-guddi",
+      "saturdayHours": "09h – 14h",
+      "sunday": "Dibéer",
+      "closed": "Tëj"
+    },
+    "contact": {
+      "title": "Jokkoo",
+      "call": "Woote ndimbal kat",
+      "location": "Keur Massar, Dakar"
+    },
+    "bottom": {
+      "rights": "Yépp ay droit ñu aar leen",
+      "signature": "Ndimbal & Investissement"
+    }
+  },
+   "about": {
+    "hero": {
+      "kicker": "Sunang Xam",
+      "title": "Immobilier bu jëm kanam",
+      "subtitle": "ABS Immo Services di toppatoo projek yu immobilier ci Sénégal."
+    },
+    "positioning": {
+      "kicker": "Sunang Doxalin",
+      "title": "Vision bu am solo",
+      "p1": "Nu di tànn bunyi bu am solo.",
+      "p2": "Nu am transparence ak toppatoo bu baax.",
+      "p3": "Projet bu nekk nu koy def ak kersa."
+    },
+    "stats": {
+      "years": "At yi",
+      "assets": "Bunyi yi",
+      "clients": "Client yi",
+      "zone": "Gox",
+      "zoneValue": "Sénégal"
+    },
+    "values": {
+      "title": "Sunang Njariñ",
+      "v1": {
+        "title": "Excellence",
+        "text": "Liggey bu baax."
+      },
+      "v2": {
+        "title": "Sécurité",
+        "text": "Wér gi ak jàmm."
+      },
+      "v3": {
+        "title": "Performance",
+        "text": "Yokk xaalis."
+      },
+      "v4": {
+        "title": "Nit ak Nit",
+        "text": "Toppatoo bu baax."
+      }
+    },
+    "cta": {
+      "title": "Nanu wax",
+      "text": "Nu ngi fi ngir yaw.",
+      "button": "JOKKOO",
+      "signature": "ABS IMMO SERVICES"
+    }
+  },
+   "contact": {
+    "hero": {
+      "tagline": "Jokor Premium",
+      "title1": "Nu kata ñi",
+      "title2": "projet immobilier",
+      "description": "Sun kariñen ak sun ñaari dinañu la dimbali ngir sa projet am success."
+    },
+    "form": {
+      "buy": "Jom",
+      "sell": "Jaa",
+      "invest": "Investir",
+      "name": "Tur",
+      "email": "Email",
+      "phone": "Téléphone",
+      "message": "Kata sa projet",
+      "button": "Yónni",
+      "security": "Sa données aar la te sutura la."
+    },
+    "sidebar": {
+      "direct": "Jokor Direct"
+    }
+  },
+  "home": {
+    "hero": {
+      "tagline": "Bureau conseil immobilier",
+      "title1": "Immobilier",
+      "title2": "bu sàkkal ni actif financier",
+      "description": "ABS Immo Services di jàppale investeer ak entreprise yi ci structuration ak aar immobilier ci Sénégal."
+    },
+    "stats": {
+      "assets": "Actifs yu ñu topp",
+      "clients": "Clients privés",
+      "experience": "At yu am xam-xam",
+      "zone": "Dëkk",
+      "zoneValue": "Sénégal"
+    },
+    "method": {
+      "analysis": {
+        "title": "Xam-xam patrimonial",
+        "text": "Jàngat bu dëgg ci opération."
+      },
+      "security": {
+        "title": "Aar yoon",
+        "text": "Wér gu liggéey ak structuration."
+      },
+      "execution": {
+        "title": "Liggéey bu jub",
+        "text": "Àndandoo ba pare."
+      }
+    },
+    "opportunities": {
+      "label": "Jokkoo bu yam",
+      "title": "Opportunités yu tànn",
+      "cta": "Catalogue bu mat",
+      "price": "Valeur estimée"
+    },
+    "cta": {
+      "title": "Jokkoo bu sutura",
+      "text": "Waxtaan yi dañuy aar. Conseiller bu mag la koy saytu.",
+      "button": "Tàmbalee waxtaan",
+      "footer": "ABS IMMO SERVICES · CONSEIL IMMOBILIER"
+    }
+  },
+  "properties": {
+    "hero": {
+      "label": "Portfolio privé",
+      "titleLine1": "Biens",
+      "titleLine2": "immobiliers sélectionnés",
+      "description": "Biens immobiliers choisis avec rigueur, analysés et sécurisés pour répondre aux attentes des investisseurs privés et institutionnels au Sénégal.",
+      "count": "OPPORTUNITÉ",
+      "countPlural": "OPPORTUNITÉS"
+    },
+    "filters": {
+      "all": "Bɛɛ",
+      "villa": "Villa",
+      "appartement": "Appartement",
+      "terrain": "Terrain",
+      "bureau": "Bureau",
+      "budgetAll": "Budget bɛɛ",
+      "budgetLow": "< 300M",
+      "budgetMedium": "300–600M",
+      "budgetHigh": "> 600M"
+    },
+    "empty": {
+      "title": "Aucun bien ne correspond à ces critères.",
+      "reset": "Réinitialiser les filtres"
+    },
+    "card": {
+      "estimatedValue": "Valeur estimée",
+      "seeFile": "VOIR LE DOSSIER →"
+    }
+  },
+  "propertyDetail": {
+    "back": "Retour",
+    "backToList": "Retour biens",
+    "price": "Prix",
+    "presentation": "Présentation du bien",
+    "features": "Caractéristiques principales",
+    "metrics": {
+      "bedrooms": "Chambres",
+      "bathrooms": "Salles de bain",
+      "surface": "Surface"
+    },
+    "whatsapp": "WhatsApp direct",
+    "call": "Appel",
+    "requestInfo": "Demander informations",
+    "whatsappMessage": "Bonjour, je suis intéressé par le bien \"{{title}}\" ({{price}}M FCFA)"
+  },
+   "navbar": {
+    "tagline": "Agence Immobilier ak Services",
+    "menu": {
+      "home": "Kadi",
+      "properties": "Bunyi",
+      "about": "Benn na",
+      "contact": "Kole"
+    }
+  }
+}
