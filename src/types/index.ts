@@ -1,7 +1,7 @@
 export interface Property {
   id: string;
   title: string;
-  type: 'villa' | 'appartement' | 'terrain' | 'bureau';
+  type: 'villa' | 'appartement' | 'terrain' | 'hangar';
   location: string;
   price: number;
   surface: number;

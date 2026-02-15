@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import {
   ArrowLeft,
   Bed,
@@ -11,193 +11,281 @@ import {
   MessageCircle,
   Phone,
   Lock
-} from 'lucide-react';
+} from 'lucide-react'
 
-import Button from '../components/Button';
-import { properties } from '../data/properties';
+import { properties } from '../data/properties'
 
 interface PropertyDetailProps {
-  propertyId: string;
-  onNavigate: (page: string) => void;
+  propertyId: string
+  onNavigate: (page: string) => void
 }
 
 export default function PropertyDetail({
   propertyId,
   onNavigate
 }: PropertyDetailProps) {
-  const { t } = useTranslation();
-  const property = properties.find(p => p.id === propertyId);
-  const [imageIndex, setImageIndex] = useState(0);
+  const { t } = useTranslation()
+  const property = properties.find(p => p.id === propertyId)
+  const [imageIndex, setImageIndex] = useState(0)
 
-  if (!property) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Button onClick={() => onNavigate('properties')}>
-          {t('propertyDetail.backToList')}
-        </Button>
-      </div>
-    );
-  }
+  if (!property) return null
 
   const whatsappMessage = t('propertyDetail.whatsappMessage', {
     title: property.title,
     price: (property.price / 1_000_000).toFixed(0)
-  });
+  })
 
   const whatsappUrl = `https://wa.me/221774308344?text=${encodeURIComponent(
     whatsappMessage
-  )}`;
+  )}`
+
+  const nextImage = () => {
+    setImageIndex((prev) =>
+      prev === property.images.length - 1 ? 0 : prev + 1
+    )
+  }
+
+  const prevImage = () => {
+    setImageIndex((prev) =>
+      prev === 0 ? property.images.length - 1 : prev - 1
+    )
+  }
 
   return (
-    <div className="bg-[#f6f7f5] text-blue-950 pt-20">
+    <div className="bg-white text-blue-950 pt-20">
 
-      {/* ================= HERO ================= */}
-      <section className="relative h-[65vh] overflow-hidden bg-black">
-        <img
-          src={property.images[imageIndex]}
-          alt={property.title}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+      {/* ================= HERO GALLERY ================= */}
+      <section className="relative h-[90vh] overflow-hidden bg-black">
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={imageIndex}
+            src={property.images[imageIndex]}
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </AnimatePresence>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+        {/* NAV BUTTONS */}
+        <button
+          onClick={prevImage}
+          className="absolute left-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
+        >
+          ←
+        </button>
 
         <button
+          onClick={nextImage}
+          className="absolute right-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
+        >
+          →
+        </button>
+
+        {/* THUMBNAILS */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-4">
+          {property.images.map((img, i) => (
+            <motion.img
+              key={i}
+              src={img}
+              onClick={() => setImageIndex(i)}
+              whileHover={{ scale: 1.05 }}
+              className={`w-24 h-16 object-cover rounded-lg cursor-pointer transition border-2 ${
+                i === imageIndex
+                  ? 'border-white'
+                  : 'border-transparent opacity-60 hover:opacity-100'
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* BACK BUTTON */}
+        <button
           onClick={() => onNavigate('properties')}
-          className="absolute top-6 left-6 z-10 flex items-center gap-2 text-white text-xs tracking-widest uppercase"
+          className="absolute top-10 left-10 z-40 flex items-center gap-3 text-white text-xs tracking-[0.4em] uppercase hover:opacity-80 transition"
         >
           <ArrowLeft className="w-4 h-4" />
           {t('propertyDetail.back')}
         </button>
 
-        <div className="absolute bottom-10 left-6 max-w-3xl text-white">
-          <h1 className="text-5xl font-light">
+        {/* TITLE */}
+        <div className="absolute bottom-24 left-16 text-white max-w-4xl z-20">
+          <motion.h1
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="text-6xl xl:text-[90px] font-bold leading-[0.95] tracking-tight"
+          >
             {property.title}
-          </h1>
-          <div className="flex items-center gap-2 mt-3 text-blue-200">
-            <MapPin className="w-4 h-4" />
+          </motion.h1>
+
+          <div className="flex items-center gap-3 mt-6 text-white/80">
+            <MapPin className="w-5 h-5" />
             {property.location}
           </div>
         </div>
+
       </section>
 
-      {/* ================= MINI GALERIE ================= */}
-      <div className="bg-white border-b">
-        <div className="max-w-[1400px] mx-auto px-6 py-4 flex gap-3 overflow-x-auto">
-          {property.images.map((img, i) => (
-            <button
-              key={i}
-              onClick={() => setImageIndex(i)}
-              className={`w-28 h-18 rounded-md overflow-hidden border ${
-                imageIndex === i
-                  ? 'border-blue-950'
-                  : 'border-gray-200 opacity-70 hover:opacity-100'
-              }`}
-            >
-              <img src={img} alt="" className="w-full h-full object-cover" />
-            </button>
-          ))}
-        </div>
-      </div>
+      {/* ================= CONTENT ================= */}
+      <section className="py-32">
+        <div className="max-w-[1600px] mx-auto px-12 grid lg:grid-cols-[2fr_1fr] gap-24">
 
-      {/* ================= CONTENU ================= */}
-      <section className="py-14">
-        <div className="max-w-[1400px] mx-auto px-6 grid lg:grid-cols-[2fr_1fr] gap-10">
-
-          {/* ===== MAIN ===== */}
+          {/* MAIN CONTENT */}
           <div>
-            <div className="grid grid-cols-3 gap-8 pb-8 border-b">
-              {property.bedrooms && (
-                <Metric icon={Bed} label={t('propertyDetail.metrics.bedrooms')} value={property.bedrooms} />
-              )}
-              {property.bathrooms && (
-                <Metric icon={Bath} label={t('propertyDetail.metrics.bathrooms')} value={property.bathrooms} />
-              )}
-              <Metric icon={Maximize} label={t('propertyDetail.metrics.surface')} value={`${property.surface} m²`} />
+
+            {/* METRICS */}
+            <div className="grid grid-cols-3 gap-20 pb-16 border-b border-blue-950/10">
+              <LuxuryMetric icon={Bed} value={property.bedrooms} label="Suites" />
+              <LuxuryMetric icon={Bath} value={property.bathrooms} label="Salles d'eau" />
+              <LuxuryMetric icon={Maximize} value={property.surface} label="M²" />
             </div>
 
-            <div className="pt-8">
-              <SectionTitle>
+            {/* DESCRIPTION */}
+            <div className="pt-20">
+              <LuxuryTitle>
                 {t('propertyDetail.presentation')}
-              </SectionTitle>
-              <p className="text-gray-700 leading-relaxed text-lg max-w-3xl">
+              </LuxuryTitle>
+
+              <p className="text-blue-950/70 text-xl leading-relaxed max-w-3xl">
                 {property.description}
               </p>
             </div>
 
-            <div className="pt-10">
-              <SectionTitle>
+            {/* FEATURES */}
+            <div className="pt-24">
+              <LuxuryTitle>
                 {t('propertyDetail.features')}
-              </SectionTitle>
-              <div className="grid md:grid-cols-2 gap-4 max-w-3xl">
+              </LuxuryTitle>
+
+              <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
                 {property.features.map((feature, i) => (
-                  <div key={i} className="flex gap-3">
-                    <Check className="w-4 h-4 mt-1" />
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className="flex gap-4 items-start"
+                  >
+                    <Check className="w-5 h-5 text-blue-950/50 mt-1" />
                     <span>{feature}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
+
           </div>
 
-          {/* ===== SIDEBAR ===== */}
+          {/* ================= SIDEBAR ================= */}
           <motion.aside
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white p-6 border shadow-lg sticky top-24 h-fit"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="bg-gradient-to-br from-blue-950 to-blue-900 text-white p-12 sticky top-32 h-fit rounded-2xl shadow-[0_30px_80px_rgba(0,0,0,0.25)]"
           >
-            <div className="pb-5 border-b">
-              <div className="text-xs tracking-widest text-gray-400 uppercase">
+            <div className="pb-10 border-b border-white/20">
+              <div className="text-xs tracking-[0.5em] uppercase text-white/60">
                 {t('propertyDetail.price')}
               </div>
-              <div className="text-4xl font-semibold mt-3">
+
+              <div className="text-6xl font-bold mt-6 tracking-tight">
                 {(property.price / 1_000_000).toFixed(0)} M FCFA
               </div>
             </div>
 
-            <div className="pt-5 space-y-4">
-              <a href={whatsappUrl} target="_blank" className="block">
-                <Button full>
-                  <MessageCircle className="w-5 h-5" />
-                  {t('propertyDetail.whatsapp')}
-                </Button>
-              </a>
+            <div className="pt-12 space-y-6">
+              <PremiumActionButton
+                icon={MessageCircle}
+                label={t('propertyDetail.whatsapp')}
+                href={whatsappUrl}
+                variant="light"
+              />
 
-              <a href="tel:774308344">
-                <Button variant="dark" full>
-                  <Phone className="w-5 h-5" />
-                  {t('propertyDetail.call')}
-                </Button>
-              </a>
-
-              <Button
+              <PremiumActionButton
+                icon={Phone}
+                label={t('propertyDetail.call')}
+                href="tel:774308344"
                 variant="outline"
-                full
+              />
+
+              <PremiumActionButton
+                icon={Lock}
+                label={t('propertyDetail.requestInfo')}
                 onClick={() => onNavigate('contact')}
-              >
-                <Lock className="w-5 h-5" />
-                {t('propertyDetail.requestInfo')}
-              </Button>
+                variant="glass"
+              />
             </div>
           </motion.aside>
 
         </div>
       </section>
     </div>
-  );
+  )
 }
 
-/* ===== COMPONENTS ===== */
+/* ================= COMPONENTS ================= */
 
-function Metric({ icon: Icon, label, value }: any) {
+function LuxuryMetric({ icon: Icon, value, label }: any) {
   return (
     <div>
-      <Icon className="w-5 h-5 mb-2" />
-      <div className="text-2xl font-semibold">{value}</div>
-      <div className="text-sm text-gray-500">{label}</div>
+      <Icon className="w-8 h-8 text-blue-950/40 mb-6" />
+      <div className="text-4xl font-semibold tracking-tight">
+        {value}
+      </div>
+      <div className="text-xs uppercase tracking-[0.4em] text-blue-950/50 mt-2">
+        {label}
+      </div>
     </div>
-  );
+  )
 }
 
-function SectionTitle({ children }: { children: string }) {
-  return <h2 className="text-2xl font-light mb-5">{children}</h2>;
+function LuxuryTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="text-3xl font-semibold tracking-tight mb-10">
+      {children}
+    </h2>
+  )
+}
+
+function PremiumActionButton({
+  icon: Icon,
+  label,
+  href,
+  onClick,
+  variant
+}: any) {
+
+  const base =
+    "w-full flex items-center justify-between px-6 py-5 rounded-xl text-sm tracking-widest uppercase transition-all duration-300"
+
+  const styles: any = {
+    light:
+      "bg-white text-blue-950 hover:scale-[1.03] hover:shadow-xl",
+    outline:
+      "border border-white/40 hover:bg-white hover:text-blue-950",
+    glass:
+      "bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20"
+  }
+
+  const content = (
+    <motion.div whileHover={{ x: 5 }} className={`${base} ${styles[variant]}`}>
+      <div className="flex items-center gap-3">
+        <Icon className="w-5 h-5" />
+        {label}
+      </div>
+      <span>→</span>
+    </motion.div>
+  )
+
+  if (href)
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        {content}
+      </a>
+    )
+
+  return <button onClick={onClick}>{content}</button>
 }

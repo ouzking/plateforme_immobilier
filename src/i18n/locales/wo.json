@@ -1,188 +1,129 @@
 {
   "footer": {
-    "brand": {
-      "name": "ABS Immo Services",
-      "tagline": "Ndimbal immobilier",
-      "description": "Cabinet bu jëfandikoo ndimbal ngir taxawal, aar ak yokk valeur bu biens immobiliers yu am solo bu mag.",
-      "region": "Senegaal · Afrik sowwu-jant"
-    },
-    "positioning": {
-      "title": "Sunuy jëfandikoo",
-      "text": "Duñu dox ni agence bu kawaida. Benn liggéey bu nekk, ñu koy jëfandikoo ni mandat bu ndimbal, ak sutura ak gis-gis bu yagg."
-    },
-    "availability": {
-      "title": "Jàmmu jëfandikoo",
-      "week": "Altine – Àjjuma",
-      "weekHours": "09h – 18h",
-      "saturday": "Àjjuma-guddi",
-      "saturdayHours": "09h – 14h",
-      "sunday": "Dibéer",
-      "closed": "Tëj"
-    },
-    "contact": {
-      "title": "Jokkoo",
-      "call": "Woote ndimbal kat",
-      "location": "Keur Massar, Dakar"
-    },
-    "bottom": {
-      "rights": "Yépp ay droit ñu aar leen",
-      "signature": "Ndimbal & Investissement"
-    }
+  "brand": {
+    "name": "ABS Immo Services",
+    "tagline": "Immobilier bu Rafet",
+    "description": "Nu ngi dimbali sunuy jëfandikukat ci jënd, jaay ak investismaŋ kër ak yoonu premium, siru ak xel.",
+    "region": "Senegaal • Afrig Gannaar"
   },
-   "about": {
-    "hero": {
-      "kicker": "Sunuy Xam-xam",
-      "title": "Immobilier bu rafet ngir say jëfandikoo",
-      "subtitle": "ABS Immo Services di toppatoo nit ñi ak investisseur yi ci seen projets immobilier ci Sénégal."
-    },
-    "positioning": {
-      "kicker": "Sunuy Doxalin",
-      "title": "Vision bu am solo ak jëm kanam",
-      "p1": "Nu di tànn kër yi am solo ci gox yi gën a rafet.",
-      "p2": "Sunuy liggéey mooy transparence ak toppatoo bu baax.",
-      "p3": "Projet bu nekk nu koy def ak kersa ak yërmandé."
-    },
-    "stats": {
-      "years": "At yi",
-      "assets": "Kër yi jaay",
-      "clients": "Jëfandikukat yi",
-      "zone": "Gox bu nu liggéey",
-      "zoneValue": "Sénégal"
-    },
-    "values": {
-      "title": "Sunuy Njariñ",
-      "v1": {
-        "title": "Excellence",
-        "text": "Liggey bu am solo ci jëf bu nekk."
-      },
-      "v2": {
-        "title": "Sécurité",
-        "text": "Wér gi ak kàddu gu leer."
-      },
-      "v3": {
-        "title": "Performance",
-        "text": "Yokk njariñu say xaalis."
-      },
-      "v4": {
-        "title": "Nit ak Nit",
-        "text": "Toppatoo bu jëm ci nit ak yërmandé."
-      }
-    },
-    "cta": {
-      "title": "Nanu wax ci sa projet",
-      "text": "Sunuy ekip am nañu waxtaan ak yaw.",
-      "button": "JÀNGANTE",
-      "signature": "ABS IMMO SERVICES — KÓLLËRÉ AK EXCELLENCE"
-    }
+  "positioning": {
+    "title": "Sunuy Yoonu Liggéey",
+    "text": "Nu moy ñi xam kër yu dëkk ak investismaŋ yu am doole, di jox ndimbal bu ñu defare ngir jëfandikukat yu am yéene."
   },
-   "contact": {
+  "availability": {
+    "title": "Jot nañu",
+    "week": "Altine – Ajuma",
+    "weekHours": "09:00 – 18:00",
+    "saturday": "Gaawu",
+    "saturdayHours": "10:00 – 15:00",
+    "sunday": "Dibéer",
+    "closed": "Tëj"
+  },
+  "contact": {
+    "title": "Jokkoo",
+    "call": "Woote léegi",
+    "location": "Ndakaaru, Senegaal"
+  },
+  "bottom": {
+    "rights": "Yépp a ngi sax",
+    "signature": "Rafet • Kóolute • Teranga"
+  }
+},
+  "about": {
     "hero": {
-      "tagline": "Jokkoo Premium",
-      "title1": "Nu wax ci sa",
-      "title2": "projet immobilier",
-      "description": "Sunuy xam-xam ak sunu sutura dinañu la dimbali ngir sa vision am njariñ."
+      "kicker": "Solo ak Vision",
+      "title": "ABS Immobilier",
+      "subtitle": "Vision bu bees ci immobilier bu am solo, ak kersa ak liggéey bu rafet."
     },
-    "form": {
-      "buy": "Jënd",
-      "sell": "Jaay",
-      "invest": "Investir",
-      "name": "Tur ak sant",
-      "email": "Adresse email",
-      "phone": "Téléphone",
-      "message": "Waxal nu sa projet",
-      "button": "Yónni sa demande",
-      "security": "Sa données dañu leen aar te sutura la."
+    "story": {
+      "s1": "Nu ngi sos expérience immobilière yu am solo.",
+      "s2": "Rafet du tànn. Moo di sunu signature."
     },
-    "sidebar": {
-      "direct": "Jokkoo Bu Direct"
+    "global": {
+      "title": "Nu am présence internationale",
+      "text": "Dakar, Paris ak Dubaï, nu ngi toppatoo client yi ak opportunité yu am solo ak stratégie.",
+      "button": "Waxtaan ak conseiller",
+      "signature": "ABS Immobilier — Solo ak kersa"
     }
   },
   "home": {
     "hero": {
-      "tagline": "Bureau conseil immobilier",
-      "title1": "Immobilier",
-      "title2": "bu ñu sàkkal ni actif financier",
-      "description": "ABS Immo Services di ànd ak investeer, family office ak entreprise yi ci structuration ak aar immobilier ci Sénégal."
+      "tagline": "Immobilier yu rafet",
+      "title1": "Jokkal sa xaalis ci",
+      "title2": "immobilier bu mag",
+      "description": "Nu di toppatoo ay jëfandikukat ci jënd ay kër ak suuf yu am solo ci Senegaal ak ci biti réew."
     },
     "stats": {
-      "assets": "Actifs yu ñu àndal",
-      "clients": "Clients privés",
+      "assets": "Kër yu jënd",
+      "clients": "Jëfandikukat yu am solo",
       "experience": "At yu am xam-xam",
-      "zone": "Dëkk",
-      "zoneValue": "Sénégal"
+      "zone": "Barab yu ñu liggéey",
+      "zoneValue": "Aduna bépp"
     },
     "method": {
       "analysis": {
-        "title": "Xam-xam patrimonial",
-        "text": "Jàngat bu leer ci opération bu ne."
+        "title": "Xam-xam bu baax",
+        "text": "Saytu marché bi bu baax ngir gis ay furs yu gën a rafet."
       },
       "security": {
-        "title": "Aar yoon",
-        "text": "Wér gu yoon ak structuration."
+        "title": "Wóor gi",
+        "text": "Jëf yu am yoon ak wóor ngir am jàmm ak leer."
       },
       "execution": {
-        "title": "Liggéey bu jub",
-        "text": "Àndandoo bu sutura ba pare."
+        "title": "Jëf bu am solo",
+        "text": "Nu toppatoo la ba ci jeexital sa projet."
       }
     },
     "opportunities": {
-      "label": "Jokkoo bu yam",
-      "title": "Opportunités yu tànn",
-      "cta": "Catalogue bu mat",
-      "price": "Valeur estimée"
+      "label": "Furs yu am solo",
+      "title": "Sunuy kër yu mag",
+      "cta": "Gis lépp",
+      "price": "Njëg"
     },
     "cta": {
-      "title": "Jokkoo bu sutura",
-      "text": "Sunuy waxtaan yi dañuy sutura. Laaj bu ne conseiller bu mag la koy saytu.",
-      "button": "Tàmbalee waxtaan",
-      "footer": "ABS IMMO SERVICES · CONSEIL IMMOBILIER"
+      "title": "Waxtaanal ak nun ci sa projet",
+      "text": "Waccal nu sa projet immobilier ngir nu dimbali la bu baax.",
+      "button": "Jokkoo ak nun",
+      "footer": "Solo • Wóor • Jàmm"
     }
   },
-  "properties": {
+ "properties": {
     "hero": {
-      "label": "Portfolio bu privé",
-      "titleLine1": "Jëfandikoo",
-      "titleLine2": "immobilier yu tànn",
-      "description": "Tànneef bu metti bu ay biens immobiliers yu ñu analizé, yu ñu aar te yu méngoo ak la soxla investisseur yu privé ak institutionnel yi ci Sénégal.",
-      "count": "JËFANDIKOO",
-      "countPlural": "JËFANDIKOO YI"
+      "label": "Kolleksioŋ Bu Rafet",
+      "titleLine1": "Sunuy",
+      "titleLine2": "Kër yi",
+      "description": "Gis ay kër yu am solo, yu ñu tann ak teey ngir seen jëfandikoo, fu nekk ak seen doole."
     },
     "filters": {
       "all": "Yépp",
       "villa": "Villa",
-      "appartement": "Appartement",
-      "terrain": "Terrain",
-      "bureau": "Bureau",
-      "budgetAll": "Bujet yépp",
-      "budgetLow": "< 300M",
-      "budgetMedium": "300–600M",
-      "budgetHigh": "> 600M"
+      "appartement": "Apartmaa",
+      "terrain": "Suuf",
+      "hangar": "Hangaar",
+      "budgetAll": "Budget yépp",
+      "budgetLow": "Yeesu 300M",
+      "budgetMedium": "300M – 600M",
+      "budgetHigh": "Yeesu 600M"
     },
     "empty": {
-      "title": "Amul benn jëfandikoo bu méngoo ak seeni critères.",
-      "reset": "Tambaliwaat filtres yi"
+      "title": "Amul kër bu méngoo ak li nga seet.",
+      "reset": "Delloo filtër yi"
     },
     "card": {
-      "estimatedValue": "Njëg mu ñu jàpp",
-      "seeFile": "XOOL DOSSIER →"
+      "estimatedValue": "Njëg lu ñu jàpp",
+      "seeFile": "XOOL DOSSIER BI"
     }
   },
   "propertyDetail": {
-    "back": "Dellusi",
-    "backToList": "Dellusi ci biens yi",
-    "price": "Njëg",
-    "presentation": "Présentation bu bien bi",
-    "features": "Caractéristiques yu am solo",
-    "metrics": {
-      "bedrooms": "Néeg",
-      "bathrooms": "Salle bain",
-      "surface": "Surface"
-    },
-    "whatsapp": "WhatsApp direct",
-    "call": "Woote",
-    "requestInfo": "Laaj ay informations",
-    "whatsappMessage": "Salaam, maa ngi bëgg xam lu gën ci bien bi \"{{title}}\" ({{price}}M FCFA)"
-  },
+  "back": "Dellusi ci kër yi",
+  "presentation": "Wane",
+  "features": "Jëfandikoo yi",
+  "price": "Njëg",
+  "whatsapp": "WhatsApp",
+  "call": "Woote",
+  "requestInfo": "Laaj xibaar",
+  "whatsappMessage": "Asalaam maleekum, dama bëgg kër \"{{title}}\" bi muy {{price}} milyoŋ FCFA. Ndax mën nga ma jox xibaar yu gën a bari?"
+},
    "navbar": {
     "tagline": "Agence Immobilier ak Services",
     "menu": {

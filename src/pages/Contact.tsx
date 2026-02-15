@@ -11,21 +11,9 @@ import {
   Sparkles
 } from 'lucide-react'
 
-/* ================= ANIMATIONS ================= */
+/* ================= PREMIUM BUTTON ================= */
 
-const containerVariants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } }
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
-}
-
-/* ================= MAGNETIC BUTTON ================= */
-
-function MagneticButton({ children }: { children: React.ReactNode }) {
+function LuxuryButton({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLButtonElement>(null)
 
   const move = (e: React.MouseEvent) => {
@@ -33,7 +21,7 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
     const r = ref.current.getBoundingClientRect()
     const x = e.clientX - r.left - r.width / 2
     const y = e.clientY - r.top - r.height / 2
-    ref.current.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`
+    ref.current.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`
   }
 
   return (
@@ -41,15 +29,17 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
       ref={ref}
       onMouseMove={move}
       onMouseLeave={() => (ref.current!.style.transform = 'translate(0,0)')}
-      className="relative overflow-hidden rounded-2xl px-12 py-4 font-semibold text-white
-      bg-gradient-to-r from-blue-900 via-indigo-800 to-blue-900
-      shadow-2xl transition-all duration-300 hover:scale-105"
+      className="relative overflow-hidden rounded-2xl px-14 py-5 
+      font-semibold tracking-widest uppercase text-sm
+      bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900
+      border border-blue-700 shadow-2xl
+      transition-all duration-300 hover:scale-[1.03]"
     >
-      <span className="relative z-10 flex items-center gap-3">
+      <span className="relative z-10 flex items-center gap-3 text-white">
         {children}
       </span>
 
-      <span className="absolute inset-0 bg-white/10 blur-2xl opacity-0 hover:opacity-40 transition duration-500" />
+      <span className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-40 transition duration-500 blur-xl" />
     </button>
   )
 }
@@ -62,77 +52,59 @@ export default function Contact() {
   const [projectType, setProjectType] = useState<'buy' | 'sell' | 'invest'>('buy')
 
   const { scrollY } = useScroll()
-  const yParallax = useTransform(scrollY, [0, 600], [0, 150])
+  const yParallax = useTransform(scrollY, [0, 600], [0, 120])
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 2500)
+    setTimeout(() => setLoading(false), 2500)
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#0a0f1f] via-[#0f172a] to-[#111827] text-white overflow-hidden">
+    <div className="relative min-h-screen bg-blue-950 text-white overflow-hidden">
 
-      {/* BACKGROUND GLOW */}
+      {/* BACKGROUND LIGHT */}
       <motion.div
         style={{ y: yParallax }}
-        className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-600/20 blur-3xl"
+        className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-700/20 blur-3xl"
       />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/20 blur-3xl rounded-full" />
 
       {/* HERO */}
-      <section className="relative pt-40 pb-28 px-6 text-center">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-          className="max-w-4xl mx-auto"
-        >
-          <motion.span
-            variants={itemVariants}
-            className="inline-flex items-center gap-2 uppercase tracking-widest text-blue-300 text-sm"
-          >
+      <section className="pt-40 pb-24 px-6 text-center">
+        <div className="max-w-4xl mx-auto">
+          <span className="uppercase tracking-[0.4em] text-xs text-blue-400 flex items-center justify-center gap-2">
             <Sparkles className="w-4 h-4" />
             {t('contact.hero.tagline')}
-          </motion.span>
+          </span>
 
-          <motion.h1
-            variants={itemVariants}
-            className="text-5xl md:text-6xl font-bold mt-6 mb-8 leading-tight"
-          >
+          <h1 className="text-5xl md:text-6xl font-serif mt-8 leading-tight">
             {t('contact.hero.title1')}
-            <span className="block bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+            <span className="block text-blue-400">
               {t('contact.hero.title2')}
             </span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-blue-100/80"
-          >
+          <p className="mt-8 text-blue-200/70 max-w-2xl mx-auto">
             {t('contact.hero.description')}
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
       </section>
 
       {/* CONTENT */}
       <section className="pb-32 px-6">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-12">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-14">
 
           {/* FORM */}
-          <motion.form
+          <form
             onSubmit={handleSubmit}
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="lg:col-span-2 backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-10 shadow-2xl space-y-10"
+            className="lg:col-span-2 bg-blue-900/40
+            backdrop-blur-2xl border border-blue-800
+            rounded-3xl p-12 shadow-[0_0_80px_rgba(0,0,0,0.6)]
+            space-y-12"
           >
 
-            {/* CHOIX PREMIUM */}
-            <div className="grid md:grid-cols-3 gap-4">
+            {/* PROJECT TYPE */}
+            <div className="grid md:grid-cols-3 gap-6">
               {[
                 { id: 'buy', label: t('contact.form.buy') },
                 { id: 'sell', label: t('contact.form.sell') },
@@ -142,72 +114,77 @@ export default function Contact() {
                   key={item.id}
                   type="button"
                   onClick={() => setProjectType(item.id as any)}
-                  className={`rounded-2xl p-6 text-center transition-all duration-300 border
+                  className={`rounded-2xl py-6 border transition-all duration-300
                   ${
                     projectType === item.id
-                      ? 'bg-blue-600/20 border-blue-400 shadow-lg shadow-blue-500/20 scale-105'
-                      : 'bg-white/5 border-white/10 hover:bg-white/10'
+                      ? 'border-blue-400 bg-blue-800/60 shadow-lg scale-105'
+                      : 'border-blue-800 bg-blue-950/50 hover:bg-blue-900/50'
                   }`}
                 >
-                  <p className="font-semibold">{item.label}</p>
+                  <p className="tracking-widest uppercase text-sm">
+                    {item.label}
+                  </p>
                 </button>
               ))}
             </div>
 
-            {/* CHAMPS COMMUNS */}
-            <Input label={t('contact.form.name')} />
-            <Input label={t('contact.form.email')} type="email" />
-            <Input label={t('contact.form.phone')} type="tel" />
+            {/* INPUTS */}
+            <LuxuryInput label={t('contact.form.name')} />
+            <LuxuryInput label={t('contact.form.email')} type="email" />
+            <LuxuryInput label={t('contact.form.phone')} type="tel" />
 
-            {/* CHAMPS DYNAMIQUES */}
             {projectType === 'buy' && (
               <>
-                <Input label="Budget estimé (FCFA)" />
-                <Input label="Zone recherchée" />
+                <LuxuryInput label="Budget estimé (FCFA)" />
+                <LuxuryInput label="Zone recherchée" />
               </>
             )}
 
             {projectType === 'sell' && (
               <>
-                <Input label="Type de bien à vendre" />
-                <Input label="Localisation du bien" />
+                <LuxuryInput label="Type de bien à vendre" />
+                <LuxuryInput label="Localisation du bien" />
               </>
             )}
 
             {projectType === 'invest' && (
               <>
-                <Input label="Montant d'investissement" />
-                <Input label="Durée d'investissement souhaitée" />
+                <LuxuryInput label="Montant d'investissement" />
+                <LuxuryInput label="Durée d'investissement souhaitée" />
               </>
             )}
 
-            <Textarea label={t('contact.form.message')} />
+            <LuxuryTextarea label={t('contact.form.message')} />
 
-            <MagneticButton>
-              <Send className="w-5 h-5" />
+            <LuxuryButton>
+              <Send className="w-4 h-4" />
               {loading ? 'Envoi...' : t('contact.form.button')}
-            </MagneticButton>
+            </LuxuryButton>
 
-            <div className="flex items-center gap-3 text-sm text-blue-200/70">
-              <ShieldCheck className="w-5 h-5" />
+            <div className="flex items-center gap-3 text-xs tracking-wider text-blue-300/60 uppercase">
+              <ShieldCheck className="w-4 h-4" />
               {t('contact.form.security')}
             </div>
 
-          </motion.form>
+          </form>
 
           {/* SIDEBAR */}
-          <div className="space-y-8">
-            <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 shadow-xl">
-              <h3 className="text-xl font-bold mb-6">
+          <div className="space-y-10">
+
+            <div className="bg-blue-900/40 backdrop-blur-xl border border-blue-800 rounded-3xl p-10">
+              <h3 className="text-lg font-serif mb-8 tracking-wide">
                 {t('contact.sidebar.direct')}
               </h3>
-              <p className="flex items-center gap-3 mb-4 text-blue-200">
+
+              <p className="flex items-center gap-4 text-blue-300 mb-5">
                 <Phone /> +221 77 430 83 44
               </p>
-              <p className="flex items-center gap-3 mb-4 text-blue-200">
+
+              <p className="flex items-center gap-4 text-blue-300 mb-5">
                 <Mail /> contact@absimmo.sn
               </p>
-              <p className="flex items-center gap-3 text-blue-200">
+
+              <p className="flex items-center gap-4 text-blue-300">
                 <MapPin /> Dakar – Sénégal
               </p>
             </div>
@@ -215,13 +192,13 @@ export default function Contact() {
             <a
               href="https://wa.me/221774308344"
               target="_blank"
-              className="block text-center py-4 rounded-2xl font-semibold
-              bg-gradient-to-r from-green-500 to-emerald-600
-              shadow-xl hover:scale-105 transition-all"
+              className="block text-center py-5 rounded-2xl font-semibold tracking-widest uppercase text-sm
+              bg-green-600 hover:bg-green-500 transition"
             >
-              <MessageCircle className="inline mr-2" />
+              <MessageCircle className="inline mr-2 w-4 h-4" />
               WhatsApp Business
             </a>
+
           </div>
 
         </div>
@@ -230,36 +207,64 @@ export default function Contact() {
   )
 }
 
-/* ================= INPUT COMPONENTS ================= */
+/* ================= LUXURY INPUT ================= */
 
-function Input({ label, type = 'text' }: { label: string, type?: string }) {
+function LuxuryInput({ label, type = 'text' }: { label: string, type?: string }) {
   return (
-    <div>
-      <label className="block text-sm text-blue-200 mb-2">
-        {label}
-      </label>
+    <div className="relative">
       <input
         type={type}
         required
-        className="w-full rounded-2xl bg-white/5 border border-white/10 px-5 py-4
-        focus:border-blue-400 focus:ring-2 focus:ring-blue-500/40 outline-none transition-all"
+        placeholder=" "
+        className="peer w-full bg-transparent 
+        border-b border-white/30
+        py-5 text-white tracking-wide
+        placeholder-transparent
+        focus:border-white focus:outline-none
+        transition-all duration-500"
       />
+
+      <label
+        className="absolute left-0 top-5 text-white/60 text-sm tracking-wider
+        transition-all duration-300
+        peer-placeholder-shown:top-5
+        peer-focus:-top-3
+        peer-focus:text-xs
+        peer-focus:text-white"
+      >
+        {label}
+      </label>
     </div>
   )
 }
 
-function Textarea({ label }: { label: string }) {
+
+function LuxuryTextarea({ label }: { label: string }) {
   return (
-    <div>
-      <label className="block text-sm text-blue-200 mb-2">
+    <div className="relative">
+      <textarea
+        rows={4}
+        required
+        placeholder=" "
+        className="peer w-full bg-transparent 
+        border-b border-white/30
+        py-5 text-white tracking-wide
+        placeholder-transparent resize-none
+        focus:border-white focus:outline-none
+        transition-all duration-500"
+      />
+
+      <label
+        className="absolute left-0 top-5 text-white/60 text-sm tracking-wider
+        transition-all duration-300
+        peer-placeholder-shown:top-5
+        peer-focus:-top-3
+        peer-focus:text-xs
+        peer-focus:text-white"
+      >
         {label}
       </label>
-      <textarea
-        rows={5}
-        required
-        className="w-full rounded-2xl bg-white/5 border border-white/10 px-5 py-4
-        focus:border-blue-400 focus:ring-2 focus:ring-blue-500/40 outline-none transition-all"
-      />
     </div>
   )
 }
+

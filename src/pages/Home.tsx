@@ -20,156 +20,237 @@ export default function Home({ onNavigate }: HomeProps) {
   return (
     <div className="bg-[#f6f7f5] text-blue-950 overflow-hidden">
 
-      {/* ================= HERO ================= */}
-      <section className="relative min-h-screen">
-        <img
+      {/* ================= HERO CINEMATIC ================= */}
+      <section className="relative min-h-screen flex items-center">
+
+        <motion.img
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 6 }}
           src="https://www.mysweetimmo.com/uy7i_73zhnb/uploads/2020/08/Capture-decran-2020-08-31-a-14.08.47.png"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-950/95 via-blue-950/90 to-[#0b1d3a]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-950/95 via-blue-950/85 to-[#0b1d3a]" />
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 pt-40 pb-24 grid lg:grid-cols-2 gap-20">
+        <div className="relative z-10 max-w-[1500px] mx-auto px-12 grid lg:grid-cols-2 gap-28 items-center pt-40">
 
+          {/* LEFT */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             className="text-white"
           >
-            <span className="uppercase tracking-[0.45em] text-blue-300 text-xs">
+            <span className="uppercase tracking-[0.6em] text-blue-300 text-xs">
               {t('home.hero.tagline')}
             </span>
 
-            <h1 className="text-6xl xl:text-7xl font-light leading-[1.05] mt-10">
+            <h1 className="text-6xl xl:text-[82px] font-light leading-[1.02] mt-12 tracking-tight">
               {t('home.hero.title1')}
               <br />
-              <span className="font-semibold">
+              <span className="font-semibold bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent">
                 {t('home.hero.title2')}
               </span>
             </h1>
 
-            <p className="text-lg text-blue-200 mt-10 max-w-xl leading-relaxed">
+            <p className="text-blue-200 mt-12 max-w-xl text-lg leading-relaxed">
               {t('home.hero.description')}
             </p>
+
+            <div className="mt-20 flex flex-wrap gap-8">
+
+  {/* ===== EXPLORER PREMIUM ===== */}
+  <motion.button
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.97 }}
+    onClick={() => onNavigate('properties')}
+    className="relative group overflow-hidden px-12 py-6 rounded-2xl 
+           bg-gradient-to-r from-red-600 via-red-700 to-red-800
+           text-white uppercase tracking-[0.35em] text-xs
+           shadow-[0_20px_60px_rgba(220,38,38,0.45)]
+           transition-all duration-500"
+
+  >
+
+    {/* Glow animation */}
+    <span className="absolute inset-0 bg-red-400/10 opacity-0 group-hover:opacity-100 transition duration-500" />
+
+    {/* Shine effect */}
+    {/* Shine ultra rouge premium */}
+<span className="absolute -left-40 top-0 w-56 h-full
+                 bg-gradient-to-r 
+                 from-transparent 
+                 via-red-500/90 
+                 to-transparent
+                 blur-lg
+                 skew-x-12
+                 group-hover:left-[140%]
+                 transition-all duration-[1300ms] ease-out" />
+
+<span className="relative z-10 flex items-center gap-4">
+  Explorer
+  <span className="text-lg transition-all duration-500 group-hover:translate-x-3 group-hover:scale-110">
+    →
+  </span>
+</span>
+
+  </motion.button>
+
+  {/* ===== CONTACT LUXURY GLASS ===== */}
+  <motion.button
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.97 }}
+    onClick={() => onNavigate('contact')}
+    className="relative group overflow-hidden px-12 py-6 rounded-2xl 
+               border border-white/30
+               bg-white/10 backdrop-blur-xl
+               text-white uppercase tracking-[0.35em] text-xs
+               shadow-[0_20px_60px_rgba(0,0,0,0.25)]
+               transition-all duration-500"
+  >
+
+    {/* Hover background */}
+    <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition duration-500" />
+
+    <span className="relative z-10 flex items-center gap-4 
+                     group-hover:text-blue-950 transition duration-500">
+      Contact
+      <span className="text-lg transition-transform duration-500 group-hover:translate-x-2">
+        →
+      </span>
+    </span>
+  </motion.button>
+
+</div>
+
           </motion.div>
 
-          {/* Stats */}
-          <div className="hidden lg:grid grid-cols-2 gap-6 self-end">
+          {/* RIGHT STATS GLASS */}
+          <div className="hidden lg:grid grid-cols-2 gap-6">
             {[
               { key: 'assets', value: '300+' },
               { key: 'clients', value: '500+' },
               { key: 'experience', value: '10+' },
               { key: 'zone', value: t('home.stats.zoneValue') }
             ].map((item, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="border border-white/20 p-6 backdrop-blur-sm text-white"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.2 }}
+                className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 text-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
               >
-                <div className="text-3xl font-medium">{item.value}</div>
-                <p className="text-xs tracking-widest text-blue-300 mt-2">
+                <div className="text-4xl font-semibold tracking-tight">
+                  {item.value}
+                </div>
+                <p className="text-xs tracking-[0.4em] text-blue-300 mt-3 uppercase">
                   {t(`home.stats.${item.key}`)}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
 
         </div>
       </section>
 
-      {/* ================= MÉTHODE ================= */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[1400px] mx-auto px-8 grid md:grid-cols-3 gap-14">
+      {/* ================= MÉTHODE PREMIUM ================= */}
+      <section className="py-32 bg-white">
+        <div className="max-w-[1400px] mx-auto px-12 grid md:grid-cols-3 gap-20">
           {[
             { icon: Landmark, key: 'analysis' },
             { icon: ShieldCheck, key: 'security' },
             { icon: Briefcase, key: 'execution' }
           ].map((item, i) => (
-            <div key={i} className="flex gap-5">
-              <item.icon className="w-7 h-7 text-blue-950 mt-1" />
-              <div>
-                <h3 className="font-medium text-lg">
-                  {t(`home.method.${item.key}.title`)}
-                </h3>
-                <p className="text-gray-600 text-sm mt-2 leading-relaxed">
-                  {t(`home.method.${item.key}.text`)}
-                </p>
+            <motion.div
+              key={i}
+              whileHover={{ y: -6 }}
+              className="group"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-blue-950/5 flex items-center justify-center mb-8 group-hover:bg-blue-950 group-hover:text-white transition duration-500">
+                <item.icon className="w-7 h-7" />
               </div>
-            </div>
+
+              <h3 className="text-xl font-semibold mb-4">
+                {t(`home.method.${item.key}.title`)}
+              </h3>
+
+              <p className="text-gray-500 leading-relaxed">
+                {t(`home.method.${item.key}.text`)}
+              </p>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* ================= OPPORTUNITÉS ================= */}
-      <section className="py-28 bg-[#f6f7f5]">
-        <div className="max-w-[1400px] mx-auto px-8">
+      {/* ================= OPPORTUNITÉS LUXE ================= */}
+      <section className="py-36 bg-[#f6f7f5]">
+        <div className="max-w-[1500px] mx-auto px-12">
 
-          <div className="flex items-end justify-between mb-16">
+          <div className="flex justify-between items-end mb-20">
             <div>
-              <span className="uppercase tracking-[0.4em] text-gray-400 text-xs">
+              <span className="uppercase tracking-[0.5em] text-gray-400 text-xs">
                 {t('home.opportunities.label')}
               </span>
-              <h2 className="text-4xl font-light mt-4">
+              <h2 className="text-5xl font-light mt-6 tracking-tight">
                 {t('home.opportunities.title')}
               </h2>
             </div>
 
             <Button
-              size="sm"
               variant="outline"
               onClick={() => onNavigate('properties')}
-              className="tracking-widest"
+              className="tracking-[0.3em]"
             >
               {t('home.opportunities.cta')}
             </Button>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-10">
+          <div className="grid lg:grid-cols-2 gap-14">
             {featuredProperties.map((property) => (
               <motion.div
                 key={property.id}
-                whileHover={{ x: 6 }}
+                whileHover={{ y: -8 }}
                 onClick={() => onNavigate('property', property.id)}
-                className="cursor-pointer bg-white border shadow-sm hover:shadow-xl transition"
+                className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_90px_rgba(0,0,0,0.15)] transition duration-500"
               >
-                <div className="grid grid-cols-[220px_1fr]">
-                  <div className="relative">
-                    <img
-                      src={property.images[0]}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
+                <div className="relative h-[360px] overflow-hidden">
+                  <img
+                    src={property.images[0]}
+                    className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                </div>
+
+                <div className="p-10">
+
+                  <div className="flex justify-between text-xs tracking-[0.4em] text-gray-400 uppercase mb-6">
+                    <span>{property.type}</span>
+                    <span className="flex items-center gap-2">
+                      <MapPin className="w-3 h-3" />
+                      {property.location}
+                    </span>
                   </div>
 
-                  <div className="p-8 flex flex-col justify-between">
+                  <h3 className="text-2xl font-semibold mb-10">
+                    {property.title}
+                  </h3>
+
+                  <div className="flex justify-between items-end">
                     <div>
-                      <div className="flex justify-between mb-4 text-xs text-gray-400">
-                        <span className="tracking-widest">
-                          {property.type.toUpperCase()}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="w-3 h-3" />
-                          {property.location}
-                        </span>
+                      <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
+                        {t('home.opportunities.price')}
+                      </p>
+                      <div className="text-3xl font-bold tracking-tight">
+                        {(property.price / 1_000_000).toFixed(0)} M FCFA
                       </div>
-                      <h3 className="text-xl font-medium mb-6">
-                        {property.title}
-                      </h3>
                     </div>
 
-                    <div className="flex justify-between items-end">
-                      <div>
-                        <p className="text-xs text-gray-400">
-                          {t('home.opportunities.price')}
-                        </p>
-                        <div className="text-2xl font-semibold">
-                          {(property.price / 1_000_000).toFixed(0)} M FCFA
-                        </div>
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        {property.surface} m²
-                      </div>
+                    <div className="text-sm text-gray-500">
+                      {property.surface} m²
                     </div>
                   </div>
+
                 </div>
               </motion.div>
             ))}
@@ -178,27 +259,31 @@ export default function Home({ onNavigate }: HomeProps) {
         </div>
       </section>
 
-      {/* ================= CTA ================= */}
-      <section className="py-32 bg-blue-950 text-white">
-        <div className="max-w-5xl mx-auto px-8 text-center">
+      {/* ================= CTA SIGNATURE ================= */}
+      <section className="py-40 bg-gradient-to-b from-blue-950 to-black text-white text-center relative overflow-hidden">
 
-          <h2 className="text-4xl font-light mb-8">
+        <div className="absolute w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[160px] top-[-150px] left-[-150px]" />
+        <div className="absolute w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-[160px] bottom-[-150px] right-[-150px]" />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-12">
+
+          <h2 className="text-5xl font-light mb-10 tracking-tight">
             {t('home.cta.title')}
           </h2>
 
-          <p className="text-blue-200 max-w-2xl mx-auto mb-14">
+          <p className="text-blue-200 mb-16 leading-relaxed">
             {t('home.cta.text')}
           </p>
 
           <Button
             size="lg"
             onClick={() => onNavigate('contact')}
-            className="tracking-[0.35em]"
+            className="tracking-[0.4em]"
           >
             {t('home.cta.button')}
           </Button>
 
-          <p className="mt-20 text-xs tracking-[0.4em] text-blue-300">
+          <p className="mt-20 text-xs tracking-[0.5em] text-blue-300 uppercase">
             {t('home.cta.footer')}
           </p>
 

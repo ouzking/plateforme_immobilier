@@ -1,86 +1,59 @@
 {
   "footer": {
-    "brand": {
-      "name": "ABS Immo Services",
-      "tagline": "Conseil immobilier",
-      "description": "Cabinet de conseil spécialisé dans la structuration, la sécurisation et la valorisation d’actifs immobiliers à forte valeur stratégique.",
-      "region": "Sénégal · Afrique de l’Ouest"
-    },
-    "positioning": {
-      "title": "Positionnement",
-      "text": "Nous n’opérons pas comme une agence classique. Chaque mission est traitée comme un mandat de conseil, avec une approche confidentielle et long terme."
-    },
-    "availability": {
-      "title": "Disponibilité",
-      "week": "Lundi – Vendredi",
-      "weekHours": "09h – 18h",
-      "saturday": "Samedi",
-      "saturdayHours": "09h – 14h",
-      "sunday": "Dimanche",
-      "closed": "Fermé"
-    },
-    "contact": {
-      "title": "Contact",
-      "call": "Appeler un conseiller",
-      "location": "Keur Massar, Dakar"
-    },
-    "bottom": {
-      "rights": "Tous droits réservés",
-      "signature": "Conseil & Investissements"
-    }
+  "brand": {
+    "name": "ABS Immo Services",
+    "tagline": "Immobilier d’Excellence",
+    "description": "Nous accompagnons nos clients dans l’acquisition, la vente et l’investissement immobilier avec une approche premium, confidentielle et stratégique.",
+    "region": "Sénégal • Afrique de l’Ouest"
   },
+  "positioning": {
+    "title": "Positionnement",
+    "text": "Spécialistes des biens résidentiels et des opportunités d’investissement à fort potentiel, nous offrons un accompagnement sur mesure à une clientèle exigeante."
+  },
+  "availability": {
+    "title": "Disponibilité",
+    "week": "Lundi – Vendredi",
+    "weekHours": "09h00 – 18h00",
+    "saturday": "Samedi",
+    "saturdayHours": "10h00 – 15h00",
+    "sunday": "Dimanche",
+    "closed": "Fermé"
+  },
+  "contact": {
+    "title": "Contact",
+    "call": "Appeler maintenant",
+    "location": "Dakar, Sénégal"
+  },
+  "bottom": {
+    "rights": "Tous droits réservés",
+    "signature": "Excellence • Confiance • Prestige"
+  }
+}
+,
+   
    "about": {
     "hero": {
-      "kicker": "Notre Expertise",
-      "title": "L’excellence immobilière au service de vos ambitions",
-      "subtitle": "ABS Immo Services accompagne particuliers et investisseurs dans la réalisation de projets immobiliers d’exception au Sénégal."
+      "kicker": "Excellence & Vision",
+      "title": "ABS Immobilier",
+      "subtitle": "Une vision moderne de l’immobilier de prestige, entre exigence, discrétion et performance."
     },
-    "positioning": {
-      "kicker": "Notre Positionnement",
-      "title": "Une vision stratégique et durable de l’immobilier",
-      "p1": "Nous sélectionnons des biens à fort potentiel dans les zones les plus attractives.",
-      "p2": "Notre approche repose sur la transparence, la rigueur juridique et l’accompagnement personnalisé.",
-      "p3": "Chaque projet est traité avec exigence et confidentialité."
+    "story": {
+      "s1": "Nous créons des expériences immobilières uniques.",
+      "s2": "L’élégance n’est pas une option. C’est une signature."
     },
-    "stats": {
-      "years": "Années d’expérience",
-      "assets": "Biens commercialisés",
-      "clients": "Clients accompagnés",
-      "zone": "Zone d’intervention",
-      "zoneValue": "Sénégal"
-    },
-    "values": {
-      "title": "Nos Valeurs",
-      "v1": {
-        "title": "Excellence",
-        "text": "Un niveau de qualité élevé dans chaque transaction."
-      },
-      "v2": {
-        "title": "Sécurité",
-        "text": "Des procédures juridiques fiables et transparentes."
-      },
-      "v3": {
-        "title": "Performance",
-        "text": "Maximiser la valeur de votre investissement."
-      },
-      "v4": {
-        "title": "Relation Humaine",
-        "text": "Un accompagnement personnalisé et durable."
-      }
-    },
-    "cta": {
-      "title": "Discutons de votre projet",
-      "text": "Notre équipe est disponible pour vous conseiller et vous accompagner.",
-      "button": "PRENDRE RENDEZ-VOUS",
-      "signature": "ABS IMMO SERVICES — CONFIANCE & EXCELLENCE"
+    "global": {
+      "title": "Une présence internationale",
+      "text": "De Dakar à Paris, jusqu’à Dubaï, nous accompagnons une clientèle exigeante à travers des opportunités exclusives et stratégiques.",
+      "button": "Parler à un conseiller",
+      "signature": "ABS Immobilier — Excellence sans compromis"
     }
   },
   "contact": {
     "hero": {
       "tagline": "Contact Premium",
-      "title1": "Parlons de votre",
+      "title1": "Discutons de votre",
       "title2": "projet immobilier",
-      "description": "Notre équipe vous accompagne avec expertise, discrétion et excellence pour concrétiser votre vision."
+      "description": "Notre équipe vous accompagne avec discrétion, expertise et exigence pour concrétiser vos ambitions."
     },
     "form": {
       "buy": "Acheter",
@@ -91,98 +64,91 @@
       "phone": "Téléphone",
       "message": "Décrivez votre projet",
       "button": "Envoyer la demande",
-      "security": "Vos informations sont protégées et confidentielles."
+      "security": "Vos informations restent strictement confidentielles"
     },
     "sidebar": {
-      "direct": "Contact Direct"
+      "direct": "Contact direct"
     }
   },
    "home": {
     "hero": {
-      "tagline": "Maison de conseil immobilier",
-      "title1": "Immobilier",
-      "title2": "structuré comme un actif financier",
-      "description": "ABS Immo Services accompagne investisseurs privés, family offices et entreprises dans la structuration, la sécurisation et la valorisation d’actifs immobiliers au Sénégal."
+      "tagline": "Immobilier d’exception",
+      "title1": "Investissez dans",
+      "title2": "l’excellence immobilière",
+      "description": "Nous accompagnons nos clients dans l’acquisition de biens stratégiques à forte valeur ajoutée au Sénégal et à l’international."
     },
     "stats": {
-      "assets": "Actifs accompagnés",
-      "clients": "Clients privés",
-      "experience": "Années d’expertise",
-      "zone": "Zone",
-      "zoneValue": "Sénégal"
+      "assets": "Biens disponibles",
+      "clients": "Clients satisfaits",
+      "experience": "Années d’expérience",
+      "zone": "Zone d’intervention",
+      "zoneValue": "International"
     },
     "method": {
       "analysis": {
-        "title": "Analyse patrimoniale",
-        "text": "Lecture stratégique de chaque opération."
+        "title": "Analyse stratégique",
+        "text": "Étude approfondie du marché, identification des meilleures opportunités et évaluation des risques."
       },
       "security": {
-        "title": "Sécurisation juridique",
-        "text": "Conformité, titres, structuration."
+        "title": "Sécurité juridique",
+        "text": "Transactions encadrées par des experts pour garantir transparence et conformité."
       },
       "execution": {
-        "title": "Exécution maîtrisée",
-        "text": "Accompagnement discret jusqu’à finalisation."
+        "title": "Exécution premium",
+        "text": "Accompagnement personnalisé jusqu’à la finalisation complète de votre projet."
       }
     },
     "opportunities": {
-      "label": "Accès restreint",
-      "title": "Opportunités sélectionnées",
-      "cta": "Catalogue complet",
-      "price": "Valeur estimée"
+      "label": "Opportunités exclusives",
+      "title": "Nos propriétés de prestige",
+      "cta": "Voir tout",
+      "price": "Prix"
     },
     "cta": {
-      "title": "Accéder à une discussion confidentielle",
-      "text": "Nos échanges sont strictement privés. Chaque demande est analysée personnellement par un conseiller senior.",
-      "button": "Initier un échange privé",
-      "footer": "ABS IMMO SERVICES · CONSEIL & STRUCTURATION IMMOBILIÈRE"
+      "title": "Discutons de votre projet",
+      "text": "Confiez-nous votre ambition immobilière et bénéficiez d’un accompagnement sur mesure.",
+      "button": "Nous contacter",
+      "footer": "Excellence • Confiance • Performance"
     }
   },
   "properties": {
     "hero": {
-      "label": "Portefeuille privé",
-      "titleLine1": "Opportunités",
-      "titleLine2": "immobilières sélectionnées",
-      "description": "Une sélection rigoureuse d’actifs analysés, structurés et alignés avec les exigences des investisseurs privés et institutionnels au Sénégal.",
-      "count": "OPPORTUNITÉ",
-      "countPlural": "OPPORTUNITÉS"
+      "label": "Collection Exclusive",
+      "titleLine1": "Nos",
+      "titleLine2": "Propriétés",
+      "description": "Découvrez une sélection rare de biens d’exception, soigneusement choisis pour leur architecture, leur emplacement et leur potentiel."
     },
     "filters": {
       "all": "Tous",
       "villa": "Villa",
       "appartement": "Appartement",
       "terrain": "Terrain",
-      "bureau": "Bureau",
-      "budgetAll": "Tous budgets",
-      "budgetLow": "< 300M",
-      "budgetMedium": "300–600M",
-      "budgetHigh": "> 600M"
+      "hangar": "Hangar",
+      "budgetAll": "Tous Budgets",
+      "budgetLow": "Moins de 300M",
+      "budgetMedium": "300M – 600M",
+      "budgetHigh": "Plus de 600M"
     },
     "empty": {
-      "title": "Aucune opportunité ne correspond à ces critères.",
+      "title": "Aucune propriété ne correspond à votre recherche.",
       "reset": "Réinitialiser les filtres"
     },
     "card": {
       "estimatedValue": "Valeur estimée",
-      "seeFile": "VOIR LE DOSSIER →"
+      "seeFile": "VOIR LE DOSSIER"
     }
   },
-  "propertyDetail": {
-    "back": "Retour",
-    "backToList": "Retour aux biens",
-    "price": "Prix",
-    "presentation": "Présentation du bien",
-    "features": "Caractéristiques clés",
-    "metrics": {
-      "bedrooms": "Chambres",
-      "bathrooms": "Salles de bain",
-      "surface": "Surface"
-    },
-    "whatsapp": "WhatsApp direct",
-    "call": "Appel téléphonique",
-    "requestInfo": "Demander des informations",
-    "whatsappMessage": "Bonjour, je suis intéressé par le bien \"{{title}}\" ({{price}}M FCFA)"
-  },
+ "propertyDetail": {
+  "back": "Retour aux propriétés",
+  "presentation": "Présentation",
+  "features": "Caractéristiques",
+  "price": "Prix",
+  "whatsapp": "WhatsApp",
+  "call": "Appeler",
+  "requestInfo": "Demander des informations",
+  "whatsappMessage": "Bonjour, je suis intéressé(e) par la propriété \"{{title}}\" au prix de {{price}} millions FCFA. Pouvez-vous me donner plus d’informations s’il vous plaît ?"
+}
+,
    "navbar": {
     "tagline": "Agence Immobilière & Services",
     "menu": {

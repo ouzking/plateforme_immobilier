@@ -83,7 +83,7 @@ image222, image2222    ],
   },
   {
     id: '3',
-    title: 'Almadies derrière BICIS',
+    title: 'Villa Moderne Premium',
     type: 'villa',
     location: 'Ngor, Dakar',
     price: 1500000,

@@ -1,188 +1,129 @@
 {
   "footer": {
-    "brand": {
-      "name": "ABS Immo Services",
-      "tagline": "Real estate advisory",
-      "description": "Advisory firm specialized in the structuring, securing and enhancement of high-value strategic real estate assets.",
-      "region": "Senegal · West Africa"
-    },
-    "positioning": {
-      "title": "Positioning",
-      "text": "We do not operate as a traditional agency. Each mission is handled as a consulting mandate with a confidential and long-term approach."
-    },
-    "availability": {
-      "title": "Availability",
-      "week": "Monday – Friday",
-      "weekHours": "9am – 6pm",
-      "saturday": "Saturday",
-      "saturdayHours": "9am – 2pm",
-      "sunday": "Sunday",
-      "closed": "Closed"
-    },
-    "contact": {
-      "title": "Contact",
-      "call": "Call an advisor",
-      "location": "Keur Massar, Dakar"
-    },
-    "bottom": {
-      "rights": "All rights reserved",
-      "signature": "Advisory & Investments"
-    }
+  "brand": {
+    "name": "ABS Immo Services",
+    "tagline": "Luxury Real Estate",
+    "description": "We support our clients in property acquisition, sales, and investment with a premium, confidential, and strategic approach.",
+    "region": "Senegal • West Africa"
   },
+  "positioning": {
+    "title": "Positioning",
+    "text": "Specialists in residential properties and high-potential investment opportunities, we provide tailored guidance to a demanding clientele."
+  },
+  "availability": {
+    "title": "Availability",
+    "week": "Monday – Friday",
+    "weekHours": "09:00 AM – 06:00 PM",
+    "saturday": "Saturday",
+    "saturdayHours": "10:00 AM – 03:00 PM",
+    "sunday": "Sunday",
+    "closed": "Closed"
+  },
+  "contact": {
+    "title": "Contact",
+    "call": "Call now",
+    "location": "Dakar, Senegal"
+  },
+  "bottom": {
+    "rights": "All rights reserved",
+    "signature": "Excellence • Trust • Prestige"
+  }
+},
   "about": {
     "hero": {
-      "kicker": "Our Expertise",
-      "title": "Real estate excellence serving your ambitions",
-      "subtitle": "ABS Immo Services supports individuals and investors in exceptional real estate projects across Senegal."
+      "kicker": "Excellence & Vision",
+      "title": "ABS Real Estate",
+      "subtitle": "A modern vision of luxury real estate, combining precision, discretion, and performance."
     },
-    "positioning": {
-      "kicker": "Our Positioning",
-      "title": "A strategic and sustainable real estate vision",
-      "p1": "We select high-potential properties in the most attractive areas.",
-      "p2": "Our approach is based on transparency, legal rigor and personalized support.",
-      "p3": "Each project is handled with discretion and excellence."
+    "story": {
+      "s1": "We create unique real estate experiences.",
+      "s2": "Elegance is not an option. It is a signature."
     },
-    "stats": {
-      "years": "Years of Experience",
-      "assets": "Properties Sold",
-      "clients": "Satisfied Clients",
-      "zone": "Operating Area",
-      "zoneValue": "Senegal"
-    },
-    "values": {
-      "title": "Our Values",
-      "v1": {
-        "title": "Excellence",
-        "text": "High standards in every transaction."
-      },
-      "v2": {
-        "title": "Security",
-        "text": "Reliable and transparent legal processes."
-      },
-      "v3": {
-        "title": "Performance",
-        "text": "Maximizing the value of your investment."
-      },
-      "v4": {
-        "title": "Human Relationship",
-        "text": "Personalized and long-term support."
-      }
-    },
-    "cta": {
-      "title": "Let’s discuss your project",
-      "text": "Our team is available to advise and support you.",
-      "button": "BOOK AN APPOINTMENT",
-      "signature": "ABS IMMO SERVICES — TRUST & EXCELLENCE"
-    }
-  },
-   "contact": {
-    "hero": {
-      "tagline": "Premium Contact",
-      "title1": "Let’s talk about your",
-      "title2": "real estate project",
-      "description": "Our team supports you with expertise, discretion and excellence to bring your vision to life."
-    },
-    "form": {
-      "buy": "Buy",
-      "sell": "Sell",
-      "invest": "Invest",
-      "name": "Full name",
-      "email": "Email address",
-      "phone": "Phone number",
-      "message": "Describe your project",
-      "button": "Send request",
-      "security": "Your information is secure and confidential."
-    },
-    "sidebar": {
-      "direct": "Direct Contact"
+    "global": {
+      "title": "An International Presence",
+      "text": "From Dakar to Paris and Dubai, we support a demanding clientele through exclusive and strategic opportunities.",
+      "button": "Speak with an advisor",
+      "signature": "ABS Real Estate — Excellence without compromise"
     }
   },
   "home": {
     "hero": {
-      "tagline": "Real estate advisory firm",
-      "title1": "Real estate",
-      "title2": "structured as a financial asset",
-      "description": "ABS Immo Services supports private investors, family offices and companies in structuring, securing and enhancing real estate assets in Senegal."
+      "tagline": "Luxury Real Estate",
+      "title1": "Invest in",
+      "title2": "real estate excellence",
+      "description": "We support our clients in acquiring high-value strategic properties in Senegal and internationally."
     },
     "stats": {
-      "assets": "Assets advised",
-      "clients": "Private clients",
-      "experience": "Years of expertise",
-      "zone": "Area",
-      "zoneValue": "Senegal"
+      "assets": "Available Properties",
+      "clients": "Satisfied Clients",
+      "experience": "Years of Experience",
+      "zone": "Coverage Area",
+      "zoneValue": "International"
     },
     "method": {
       "analysis": {
-        "title": "Asset analysis",
-        "text": "Strategic review of each operation."
+        "title": "Strategic Analysis",
+        "text": "In-depth market study, identification of the best opportunities, and risk assessment."
       },
       "security": {
-        "title": "Legal structuring",
-        "text": "Compliance, titles, structuring."
+        "title": "Legal Security",
+        "text": "Transactions supervised by experts to ensure transparency and compliance."
       },
       "execution": {
-        "title": "Controlled execution",
-        "text": "Discrete support until completion."
+        "title": "Premium Execution",
+        "text": "Personalized support until the complete finalization of your project."
       }
     },
     "opportunities": {
-      "label": "Restricted access",
-      "title": "Selected opportunities",
-      "cta": "Full catalogue",
-      "price": "Estimated value"
+      "label": "Exclusive Opportunities",
+      "title": "Our Prestige Properties",
+      "cta": "View All",
+      "price": "Price"
     },
     "cta": {
-      "title": "Access a confidential discussion",
-      "text": "All exchanges are strictly private. Each request is personally reviewed by a senior advisor.",
-      "button": "Start a private discussion",
-      "footer": "ABS IMMO SERVICES · REAL ESTATE ADVISORY & STRUCTURING"
+      "title": "Let’s discuss your project",
+      "text": "Entrust us with your real estate ambitions and benefit from tailored guidance.",
+      "button": "Contact Us",
+      "footer": "Excellence • Trust • Performance"
     }
   },
-   "properties": {
+  "properties": {
     "hero": {
-      "label": "Private portfolio",
-      "titleLine1": "Selected",
-      "titleLine2": "real estate opportunities",
-      "description": "A rigorous selection of assets analyzed, structured, and aligned with the requirements of private and institutional investors in Senegal.",
-      "count": "OPPORTUNITY",
-      "countPlural": "OPPORTUNITIES"
+      "label": "Exclusive Collection",
+      "titleLine1": "Our",
+      "titleLine2": "Properties",
+      "description": "Discover a rare selection of exceptional properties, carefully chosen for their architecture, location, and investment potential."
     },
     "filters": {
       "all": "All",
       "villa": "Villa",
       "appartement": "Apartment",
       "terrain": "Land",
-      "bureau": "Office",
-      "budgetAll": "All budgets",
-      "budgetLow": "< 300M",
-      "budgetMedium": "300–600M",
-      "budgetHigh": "> 600M"
+      "hangar": "Warehouse",
+      "budgetAll": "All Budgets",
+      "budgetLow": "Under 300M",
+      "budgetMedium": "300M – 600M",
+      "budgetHigh": "Above 600M"
     },
     "empty": {
-      "title": "No opportunities match these criteria.",
+      "title": "No properties match your search.",
       "reset": "Reset filters"
     },
     "card": {
-      "estimatedValue": "Estimated value",
-      "seeFile": "VIEW FILE →"
+      "estimatedValue": "Estimated Value",
+      "seeFile": "VIEW FILE"
     }
   },
-  "propertyDetail": {
-    "back": "Back",
-    "backToList": "Back to properties",
-    "price": "Price",
-    "presentation": "Property overview",
-    "features": "Key features",
-    "metrics": {
-      "bedrooms": "Bedrooms",
-      "bathrooms": "Bathrooms",
-      "surface": "Surface"
-    },
-    "whatsapp": "WhatsApp contact",
-    "call": "Phone call",
-    "requestInfo": "Request information",
-    "whatsappMessage": "Hello, I am interested in the property \"{{title}}\" ({{price}}M FCFA)"
-  },
+ "propertyDetail": {
+  "back": "Back to properties",
+  "presentation": "Presentation",
+  "features": "Features",
+  "price": "Price",
+  "whatsapp": "WhatsApp",
+  "call": "Call",
+  "requestInfo": "Request information",
+  "whatsappMessage": "Hello, I am interested in the property \"{{title}}\" priced at {{price}} million FCFA. Could you please provide more information?"
+},
     "navbar": {
     "tagline": "Real Estate & Services",
     "menu": {
