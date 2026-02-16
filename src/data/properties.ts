@@ -40,6 +40,21 @@ import image100 from "../assets/appart8/app88.jpeg";
 import image1000 from "../assets/appart8/app888.jpeg";
 import image10000 from "../assets/appart8/app8888.jpeg";
 import image100000 from "../assets/appart8/app88888.jpeg";
+import com1 from "../assets/commerce/commerce1.jpeg";
+import com2 from "../assets/commerce/commerce2.jpeg";
+import com3 from "../assets/commerce/commerce3.jpeg";
+import com4 from "../assets/commerce/commerce4.jpeg";
+import han2 from "../assets/hangars2/hangar2.jpeg";
+import han22 from "../assets/hangars2/hangar22.jpeg";
+import han222 from "../assets/hangars2/hangar222.jpeg";
+import han2222 from "../assets/hangars2/hangar2222.jpeg";
+import han3 from "../assets/hangars3/hangar3.jpeg";
+import han33 from "../assets/hangars3/hangar33.jpeg";
+import han333 from "../assets/hangars3/hangar333.jpeg";
+import han4 from "../assets/hangars4/hangar4.jpeg";
+import han44 from "../assets/hangars4/hangar44.jpeg";
+import han444 from "../assets/hangars4/hangar444.jpeg";
+import han4444 from "../assets/hangars4/hangar4444.jpeg";
 
 
 
@@ -183,5 +198,55 @@ image222, image2222    ],
     image10, image100, image1000, image10000, image100000
     ],
     features: ['Piscine privé', 'Réservoir d’eau', 'Cuisine entièrement équipée', 'Garage', 'Buanderie', 'Jardin verdoyant', 'Sécurité'],
+  },
+  {
+  id: '10',
+  title: 'Grand Magasin Spacieux',
+  type: 'commerce',   // 👈 IMPORTANT
+  price: 700000,
+  surface: 320,
+  location: 'Dalifort Belvédère',
+  description: 'Le local dispose de toilettes et convient idéalement pour commerce, bureaux ou showroom.',
+  images: [com1, com2, com3, com4],
+  features: ['A louer', 'Buanderie', 'une excellente visibilité', 'Sécurité'],
+},
+{
+    id: '11',
+    title: 'Hangar Standing',
+    type: 'hangar',
+    location: ' Rufisque, Dakar',
+    price: 2000000,
+    surface: 800,
+    description: 'Espace professionnel d\'exception, zone accessible, Il dispose d’une toilette interne et offre un espace fonctionnel et facilement accessible,  idéale pour stockage, logistique ou activité industrielle, généreuse, facilitant la manutention et le stockage en hauteur, Accès poids lourds et sécurité renforcée.',
+    images: [
+      han2, han22, han222, han2222
+    ],
+    features: ['Localisation stratégique', 'Structure adaptée ', 'Hauteur sous plafond ', 'Sécurité', 'Accès poids lourds'],
+  },
+  {
+    id: '12',
+    title: 'Hangar Haut Standing',
+    type: 'hangar',
+    location: 'Diamniadio Dougar, Dakar',
+    price: 6500000,
+    surface: 2200,
+    description: 'Espace professionnel d\'exception, zone accessible, proche des grands axes routiers,  Ce hangar est parfaitement adapté pour des activités de logistique, stockage ou industrielles, avec un accès facile aux grands axes et infrastructures de Diamniadio.',
+    images: [
+      han3, han33, han333
+    ],
+    features: ['Localisation stratégique', 'Structure adaptée ', 'Hauteur sous plafond ', 'Sécurité', 'Accès poids lourds'],
+  },
+   {
+    id: '13',
+    title: 'Hangar Ultra Premium',
+    type: 'hangar',
+    location: 'Diamniadio, Dakar',
+    price: 2500000 ,
+    surface: 800,
+    description: 'Un bâtiment administratif avec bureaux et toilettes séparées, zone accessible, Des bureaux intégrés à l’intérieur,  un espace de réfection / cuisine pour plus de confort, parfaitement adapté pour des activités de logistique, stockage ou industrielles, Une chambre gardien pour assurer la sécurité',
+    images: [
+      han4, han44, han444, han4444
+    ],
+    features: ['Localisation stratégique', 'Structure adaptée ', 'Hauteur sous plafond ', 'Sécurité', 'Accès poids lourds'],
   },
 ];

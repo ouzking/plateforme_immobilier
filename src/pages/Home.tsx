@@ -184,80 +184,97 @@ export default function Home({ onNavigate }: HomeProps) {
       </section>
 
       {/* ================= OPPORTUNITÉS LUXE ================= */}
-      <section className="py-36 bg-[#f6f7f5]">
-        <div className="max-w-[1500px] mx-auto px-12">
+      {/* ================= OPPORTUNITÉS SIGNATURE ================= */}
+<section className="py-32 bg-[#f6f7f5]">
+  <div className="max-w-[1500px] mx-auto px-12">
 
-          <div className="flex justify-between items-end mb-20">
-            <div>
-              <span className="uppercase tracking-[0.5em] text-gray-400 text-xs">
-                {t('home.opportunities.label')}
+    <div className="flex justify-between items-end mb-16">
+      <div>
+        <span className="uppercase tracking-[0.55em] text-gray-400 text-[10px]">
+          {t('home.opportunities.label')}
+        </span>
+
+        {/* Titre réduit + plus élégant */}
+        <h2 className="text-[38px] font-light mt-4 tracking-tight text-blue-950">
+          {t('home.opportunities.title')}
+        </h2>
+      </div>
+
+      <Button
+        variant="outline"
+        onClick={() => onNavigate('properties')}
+        className="tracking-[0.35em] text-xs"
+      >
+        {t('home.opportunities.cta')}
+      </Button>
+    </div>
+
+    <div className="grid lg:grid-cols-2 gap-12">
+      {featuredProperties.map((property) => (
+        <motion.div
+          key={property.id}
+          whileHover={{ y: -6 }}
+          transition={{ duration: 0.4 }}
+          onClick={() => onNavigate('property', property.id)}
+          className="group cursor-pointer bg-white rounded-3xl overflow-hidden
+                     shadow-[0_15px_50px_rgba(0,0,0,0.06)]
+                     hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]
+                     transition duration-500"
+        >
+          {/* IMAGE PLUS RAFFINÉE */}
+          <div className="relative h-[300px] overflow-hidden">
+            <img
+              src={property.images?.[0]}
+              className="w-full h-full object-cover transition duration-[900ms] ease-out group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+          </div>
+
+          <div className="p-10">
+
+            <div className="flex justify-between text-[10px] tracking-[0.4em] text-gray-400 uppercase mb-6">
+              <span>{property.type}</span>
+              <span className="flex items-center gap-2">
+                <MapPin className="w-3 h-3" />
+                {property.location}
               </span>
-              <h2 className="text-5xl font-light mt-6 tracking-tight">
-                {t('home.opportunities.title')}
-              </h2>
             </div>
 
-            <Button
-              variant="outline"
-              onClick={() => onNavigate('properties')}
-              className="tracking-[0.3em]"
-            >
-              {t('home.opportunities.cta')}
-            </Button>
-          </div>
+            <h3 className="text-[22px] font-medium mb-8 tracking-tight text-blue-950 group-hover:text-black transition">
+              {property.title}
+            </h3>
 
-          <div className="grid lg:grid-cols-2 gap-14">
-            {featuredProperties.map((property) => (
-              <motion.div
-                key={property.id}
-                whileHover={{ y: -8 }}
-                onClick={() => onNavigate('property', property.id)}
-                className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_90px_rgba(0,0,0,0.15)] transition duration-500"
-              >
-                <div className="relative h-[360px] overflow-hidden">
-                  <img
-                    src={property.images[0]}
-                    className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="flex justify-between items-end">
+
+              {/* PRIX NON ARRONDI – FORMAT BANCAIRE */}
+              <div>
+                <p className="text-[10px] text-gray-400 uppercase tracking-[0.35em] mb-3">
+                  {t('home.opportunities.price')}
+                </p>
+
+                <div className="text-[26px] font-semibold tracking-tight text-blue-950">
+                  {new Intl.NumberFormat("fr-FR", {
+                    style: "currency",
+                    currency: "XOF",
+                    maximumFractionDigits: 0
+                  }).format(property.price)}
                 </div>
+              </div>
 
-                <div className="p-10">
+              <div className="text-sm text-gray-500 tracking-wide">
+                {property.surface} m²
+              </div>
 
-                  <div className="flex justify-between text-xs tracking-[0.4em] text-gray-400 uppercase mb-6">
-                    <span>{property.type}</span>
-                    <span className="flex items-center gap-2">
-                      <MapPin className="w-3 h-3" />
-                      {property.location}
-                    </span>
-                  </div>
+            </div>
 
-                  <h3 className="text-2xl font-semibold mb-10">
-                    {property.title}
-                  </h3>
-
-                  <div className="flex justify-between items-end">
-                    <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">
-                        {t('home.opportunities.price')}
-                      </p>
-                      <div className="text-3xl font-bold tracking-tight">
-                        {(property.price / 1_000_000).toFixed(0)} M FCFA
-                      </div>
-                    </div>
-
-                    <div className="text-sm text-gray-500">
-                      {property.surface} m²
-                    </div>
-                  </div>
-
-                </div>
-              </motion.div>
-            ))}
           </div>
+        </motion.div>
+      ))}
+    </div>
 
-        </div>
-      </section>
+  </div>
+</section>
+
 
       {/* ================= CTA SIGNATURE ================= */}
       <section className="py-40 bg-gradient-to-b from-blue-950 to-black text-white text-center relative overflow-hidden">

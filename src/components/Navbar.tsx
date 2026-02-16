@@ -184,45 +184,128 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
       </div>
 
       {/* ===== MOBILE MENU ===== */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="md:hidden fixed inset-0 bg-white z-40"
-          >
-            <div className="h-full flex flex-col justify-between px-6 py-10">
-              <div className="space-y-6">
-                {navItems.map(item => (
-                  <button
-                    key={item.path}
-                    onClick={() => {
-                      onNavigate(item.path);
-                      setIsMenuOpen(false);
-                    }}
-                    className="block text-2xl font-light text-blue-950"
-                  >
-                    {item.name}
-                  </button>
-                ))}
+      {/* ===== MOBILE MENU PREMIUM ===== */}
+<AnimatePresence>
+  {isMenuOpen && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="md:hidden fixed inset-0 z-50"
+    >
+      {/* Background cinematic */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-950 via-[#0b1d3a] to-black" />
+      <div className="absolute inset-0 backdrop-blur-2xl" />
 
-                <div className="pt-6 flex gap-3">
-                  {languages.map(lang => (
-                    <button
-                      key={lang.code}
-                      onClick={() => changeLanguage(lang.code)}
-                      className="px-4 py-2 rounded-full border border-blue-950/20 text-sm font-medium"
-                    >
-                      {lang.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
+      <motion.div
+        initial={{ x: '100%' }}
+        animate={{ x: 0 }}
+        exit={{ x: '100%' }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        className="relative h-full flex flex-col justify-between px-8 py-16"
+      >
+
+        {/* TOP SECTION */}
+        <div>
+
+          <div className="flex justify-between items-center mb-16">
+            <span className="uppercase tracking-[0.5em] text-xs text-blue-400">
+              Menu
+            </span>
+
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="text-white"
+            >
+              <X size={28} />
+            </button>
+          </div>
+
+          {/* NAV ITEMS */}
+          <div className="space-y-10">
+            {navItems.map((item, index) => (
+              <motion.button
+                key={item.path}
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                onClick={() => {
+                  onNavigate(item.path)
+                  setIsMenuOpen(false)
+                }}
+                className="group flex items-end gap-6 text-left"
+              >
+                <span className="text-blue-400 text-sm tracking-widest">
+                  0{index + 1}
+                </span>
+
+                <span className="text-4xl font-light text-white group-hover:text-blue-400 transition duration-300">
+                  {item.name}
+                </span>
+              </motion.button>
+            ))}
+          </div>
+
+          {/* LANGUAGES */}
+          <div className="mt-20">
+            <p className="uppercase tracking-[0.4em] text-[10px] text-blue-400 mb-6">
+              Language
+            </p>
+
+            <div className="flex gap-4">
+              {languages.map(lang => (
+                <button
+                  key={lang.code}
+                  onClick={() => changeLanguage(lang.code)}
+                  className={`px-5 py-2 rounded-full border text-sm tracking-widest transition-all duration-300
+                  ${
+                    i18n.language === lang.code
+                      ? 'border-blue-400 bg-blue-900 text-white'
+                      : 'border-white/20 text-white hover:border-blue-400'
+                  }`}
+                >
+                  {lang.label}
+                </button>
+              ))}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+
+        </div>
+
+        {/* BOTTOM CONTACT BLOCK */}
+        <div className="border-t border-white/10 pt-10">
+
+          <a
+            href="tel:774308344"
+            className="flex items-center justify-between text-white mb-6"
+          >
+            <div className="flex items-center gap-4">
+              <Phone className="w-5 h-5 text-blue-400" />
+              <span className="text-lg font-light">
+                +221 77 430 83 44
+              </span>
+            </div>
+
+            <ArrowUpRight className="w-5 h-5 text-blue-400" />
+          </a>
+
+          <a
+            href="https://wa.me/221774308344"
+            target="_blank"
+            className="block text-center py-4 rounded-2xl 
+              bg-gradient-to-r from-green-600 to-green-500
+              font-semibold tracking-[0.3em] text-xs uppercase"
+          >
+            WhatsApp Business
+          </a>
+
+        </div>
+
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
     </nav>
   );
 }

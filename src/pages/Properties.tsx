@@ -1,38 +1,39 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
-import { Bed, Bath, Maximize, MapPin } from 'lucide-react'
-import Button from '../components/Button'
-import { properties } from '../data/properties'
-import type { PropertyType } from '../types'
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { useTranslation } from "react-i18next"
+import { Bed, Bath, Maximize, MapPin, Building2 } from "lucide-react"
+import Button from "../components/Button"
+import { properties } from "../data/properties"
+import type { PropertyType } from "../types"
 
 interface PropertiesProps {
   onNavigate: (page: string, propertyId?: string) => void
 }
 
-/* ================= ULTRA PREMIUM BOLD TITLE ================= */
+/* ================= FORMATTER PRIX FCFA ================= */
+
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat("fr-FR", {
+    style: "currency",
+    currency: "XOF",
+    maximumFractionDigits: 0,
+  }).format(price)
+}
+
+/* ================= PREMIUM TITLE ================= */
 
 function PremiumTitle({ text }: { text: string }) {
-  const letters = text.split('')
-
   return (
-    <h1 className="text-8xl xl:text-[130px] font-bold leading-[0.95] tracking-tight overflow-hidden">
-      {letters.map((letter, index) => (
-        <motion.span
-          key={index}
-          initial={{ y: '120%', opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            duration: 0.8,
-            delay: index * 0.02,
-            ease: [0.22, 1, 0.36, 1]
-          }}
-          className="inline-block bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent"
-        >
-          {letter === ' ' ? '\u00A0' : letter}
-        </motion.span>
-      ))}
-    </h1>
+    <motion.h1
+      initial={{ opacity: 0, y: 60 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.2 }}
+      className="text-7xl md:text-8xl xl:text-[120px] font-semibold leading-[0.95] tracking-tight
+      bg-gradient-to-b from-white via-white to-white/60 bg-clip-text text-transparent"
+      style={{ fontFamily: "Playfair Display, serif" }}
+    >
+      {text}
+    </motion.h1>
   )
 }
 
@@ -40,77 +41,66 @@ export default function Properties({ onNavigate }: PropertiesProps) {
   const { t } = useTranslation()
 
   const [selectedType, setSelectedType] =
-    useState<PropertyType>('all')
+    useState<PropertyType>("all")
 
   const [priceRange, setPriceRange] =
-    useState<'all' | 'low' | 'medium' | 'high'>('all')
+    useState<"all" | "low" | "medium" | "high">("all")
 
   const filteredProperties = properties.filter((property) => {
     const typeMatch =
-      selectedType === 'all' || property.type === selectedType
+      selectedType === "all" || property.type === selectedType
 
     let priceMatch = true
-    if (priceRange === 'low') priceMatch = property.price < 300_000_000
-    if (priceRange === 'medium')
+    if (priceRange === "low") priceMatch = property.price < 300_000_000
+    if (priceRange === "medium")
       priceMatch =
         property.price >= 300_000_000 &&
         property.price < 600_000_000
-    if (priceRange === 'high')
+    if (priceRange === "high")
       priceMatch = property.price >= 600_000_000
 
     return typeMatch && priceMatch
   })
 
   return (
-    <div className="bg-gradient-to-b from-blue-950 via-blue-950 to-black min-h-screen text-white">
+    <div className="relative bg-gradient-to-b from-blue-950 via-black to-black min-h-screen text-white overflow-hidden">
+
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-700/20 blur-[180px] opacity-30 pointer-events-none" />
 
       {/* ================= HERO ================= */}
-      <section className="pt-44 pb-44 relative overflow-hidden">
+      <section className="pt-44 pb-36 relative z-10">
         <div className="max-w-[1600px] mx-auto px-12">
 
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="uppercase tracking-[0.9em] text-white/30 text-xs"
-          >
-            {t('properties.hero.label')}
-          </motion.span>
+          <span className="uppercase tracking-[0.9em] text-white/30 text-xs">
+            {t("properties.hero.label")}
+          </span>
 
-          <div className="mt-24">
-            <PremiumTitle text={t('properties.hero.titleLine1')} />
-            <div className="mt-10">
-              <PremiumTitle text={t('properties.hero.titleLine2')} />
-            </div>
+          <div className="mt-16 space-y-6">
+            <PremiumTitle text={t("properties.hero.titleLine1")} />
+            <PremiumTitle text={t("properties.hero.titleLine2")} />
           </div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 1 }}
-            className="text-white/50 mt-24 max-w-2xl text-xl leading-relaxed"
-          >
-            {t('properties.hero.description')}
-          </motion.p>
+          <p className="text-white/50 mt-16 max-w-2xl text-xl leading-relaxed">
+            {t("properties.hero.description")}
+          </p>
 
         </div>
       </section>
 
-      {/* ================= FILTRES ================= */}
-      <section className="sticky top-0 z-40 backdrop-blur-xl bg-blue-950/80 border-y border-white/10">
+      {/* ================= FILTERS ================= */}
+      <section className="sticky top-0 z-40 backdrop-blur-2xl bg-black/40 border-y border-white/10">
         <div className="max-w-[1600px] mx-auto px-12 py-8 flex flex-wrap gap-6 items-center">
 
-          {/* TYPES */}
           <div className="flex gap-4 flex-wrap">
-            {(['all', 'villa', 'appartement', 'terrain', 'hangar'] as PropertyType[]).map((type) => (
+            {(["all", "villa", "appartement", "terrain", "hangar", "commerce"] as PropertyType[]).map((type) => (
               <button
                 key={type}
                 onClick={() => setSelectedType(type)}
-                className={`px-7 py-3 text-xs tracking-[0.3em] uppercase border transition-all duration-300
+                className={`px-8 py-3 text-xs tracking-[0.35em] uppercase rounded-full border transition-all duration-500
                 ${
                   selectedType === type
-                    ? 'bg-white text-blue-950 border-white'
-                    : 'border-white/20 text-white/50 hover:border-white hover:text-white'
+                    ? "bg-white text-black border-white shadow-lg"
+                    : "border-white/20 text-white/50 hover:border-white hover:text-white"
                 }`}
               >
                 {t(`properties.filters.${type}`)}
@@ -118,35 +108,33 @@ export default function Properties({ onNavigate }: PropertiesProps) {
             ))}
           </div>
 
-          {/* PRIX */}
-          <div className="flex gap-4 ml-auto flex-wrap">
-            {[
-              { key: 'all', label: 'budgetAll' },
-              { key: 'low', label: 'budgetLow' },
-              { key: 'medium', label: 'budgetMedium' },
-              { key: 'high', label: 'budgetHigh' }
-            ].map((range) => (
-              <button
-                key={range.key}
-                onClick={() => setPriceRange(range.key as any)}
-                className={`px-7 py-3 text-xs tracking-[0.3em] border transition-all duration-300
-                ${
-                  priceRange === range.key
-                    ? 'bg-white text-blue-950 border-white'
-                    : 'border-white/20 text-white/50 hover:border-white hover:text-white'
-                }`}
-              >
-                {t(`properties.filters.${range.label}`)}
-              </button>
-            ))}
-          </div>
-
         </div>
       </section>
 
-      {/* ================= LISTE ================= */}
-      <section className="py-36">
-        <div className="max-w-[1600px] mx-auto px-12 space-y-44">
+      {/* ================= COMMERCE HIGHLIGHT ================= */}
+      {selectedType === "commerce" && (
+        <section className="py-24 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="max-w-4xl mx-auto"
+          >
+            <Building2 className="mx-auto w-12 h-12 text-white/40 mb-8" />
+            <h2 className="text-4xl font-semibold mb-6">
+              Investissement & Immobilier Commercial
+            </h2>
+            <p className="text-white/50 text-lg leading-relaxed">
+              Boutiques, immeubles professionnels, centres d'affaires et actifs
+              à fort rendement situés dans les zones stratégiques de Dakar.
+            </p>
+          </motion.div>
+        </section>
+      )}
+
+      {/* ================= PROPERTY LIST ================= */}
+      <section className="py-32 relative z-10">
+        <div className="max-w-[1600px] mx-auto px-12 space-y-36">
 
           <AnimatePresence>
             {filteredProperties.length === 0 && (
@@ -156,16 +144,16 @@ export default function Properties({ onNavigate }: PropertiesProps) {
                 className="text-center py-28"
               >
                 <p className="text-2xl text-white/60 mb-10">
-                  {t('properties.empty.title')}
+                  {t("properties.empty.title")}
                 </p>
 
                 <Button
                   onClick={() => {
-                    setSelectedType('all')
-                    setPriceRange('all')
+                    setSelectedType("all")
+                    setPriceRange("all")
                   }}
                 >
-                  {t('properties.empty.reset')}
+                  {t("properties.empty.reset")}
                 </Button>
               </motion.div>
             )}
@@ -177,29 +165,26 @@ export default function Properties({ onNavigate }: PropertiesProps) {
               initial={{ opacity: 0, y: 80 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 1,
-                ease: [0.22, 1, 0.36, 1]
-              }}
-              onClick={() => onNavigate('property', property.id)}
-              className="cursor-pointer group"
+              transition={{ duration: 1 }}
+              onClick={() => onNavigate("property", property.id)}
+              className="group cursor-pointer"
             >
               <div className="grid lg:grid-cols-2 gap-24 items-center">
 
-                {/* IMAGE */}
-                <div className="relative overflow-hidden rounded-sm">
+                <div className="relative overflow-hidden rounded-2xl shadow-[0_30px_100px_rgba(0,0,0,0.7)]">
                   <img
                     src={property.images[0]}
                     alt={property.title}
                     loading="lazy"
-                    className="w-full h-[700px] object-cover transition duration-700 group-hover:scale-[1.04]"
+                    className="w-full h-[750px] object-cover transition duration-[1200ms] ease-out group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 border border-white/10 group-hover:border-white/40 transition duration-700 rounded-2xl" />
                 </div>
 
-                {/* CONTENT */}
                 <div>
 
-                  <div className="flex justify-between items-center mb-10 text-xs tracking-[0.5em] text-white/40 uppercase">
+                  <div className="flex justify-between items-center mb-8 text-xs tracking-[0.5em] text-white/40 uppercase">
                     <span>{t(`properties.filters.${property.type}`)}</span>
                     <span className="flex items-center gap-2">
                       <MapPin className="w-4 h-4" />
@@ -207,62 +192,33 @@ export default function Properties({ onNavigate }: PropertiesProps) {
                     </span>
                   </div>
 
-                  <h3 className="text-6xl font-semibold mb-24 leading-[1.05] tracking-tight">
+                  <h3 className="text-5xl xl:text-6xl font-semibold mb-16 leading-[1.1] tracking-tight">
                     {property.title}
                   </h3>
 
-                  <div className="grid grid-cols-3 gap-20 mb-24">
+                  <div className="grid grid-cols-3 gap-16 mb-16">
 
-                    {property.bedrooms && (
-                      <div>
-                        <Bed className="w-7 h-7 text-white/30 mb-5" />
-                        <div className="text-4xl font-medium">
-                          {property.bedrooms}
-                        </div>
-                        <div className="text-xs text-white/30 uppercase tracking-wider">
-                          Suites
-                        </div>
-                      </div>
+                    {property.type !== "commerce" && property.bedrooms && (
+                      <Metric icon={Bed} value={property.bedrooms} label="Suites" />
                     )}
 
-                    {property.bathrooms && (
-                      <div>
-                        <Bath className="w-7 h-7 text-white/30 mb-5" />
-                        <div className="text-4xl font-medium">
-                          {property.bathrooms}
-                        </div>
-                        <div className="text-xs text-white/30 uppercase tracking-wider">
-                          Salles d'eau
-                        </div>
-                      </div>
+                    {property.type !== "commerce" && property.bathrooms && (
+                      <Metric icon={Bath} value={property.bathrooms} label="Salles d'eau" />
                     )}
 
-                    <div>
-                      <Maximize className="w-7 h-7 text-white/30 mb-5" />
-                      <div className="text-4xl font-medium">
-                        {property.surface}
-                      </div>
-                      <div className="text-xs text-white/30 uppercase tracking-wider">
-                        M²
-                      </div>
-                    </div>
+                    <Metric icon={Maximize} value={property.surface} label="M²" />
 
                   </div>
 
-                  <div className="border-t border-white/10 pt-12 flex justify-between items-end">
-
+                  <div className="border-t border-white/10 pt-10 flex justify-between items-end">
                     <div>
-                      <p className="text-xs tracking-[0.4em] text-white/40 uppercase mb-4">
-                        {t('properties.card.estimatedValue')}
-                      </p>
-
-                      <div className="text-6xl font-bold tracking-tight">
-                        {(property.price / 1_000_000).toFixed(0)} M FCFA
+                      <div className="text-5xl font-bold tracking-tight">
+                        {formatPrice(property.price)}
                       </div>
                     </div>
 
-                    <span className="text-xs tracking-[0.6em] text-white/40 group-hover:text-white transition duration-300">
-                      {t('properties.card.seeFile')}
+                    <span className="text-xs tracking-[0.6em] text-white/40 group-hover:text-white transition duration-500">
+                      {t("properties.card.seeFile")}
                     </span>
 
                   </div>
@@ -274,7 +230,20 @@ export default function Properties({ onNavigate }: PropertiesProps) {
 
         </div>
       </section>
+    </div>
+  )
+}
 
+/* ================= METRIC COMPONENT ================= */
+
+function Metric({ icon: Icon, value, label }: any) {
+  return (
+    <div>
+      <Icon className="w-6 h-6 text-white/30 mb-4" />
+      <div className="text-3xl font-medium">{value}</div>
+      <div className="text-xs text-white/30 uppercase tracking-wider mt-2">
+        {label}
+      </div>
     </div>
   )
 }

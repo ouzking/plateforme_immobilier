@@ -20,10 +20,21 @@ interface PropertyDetailProps {
   onNavigate: (page: string) => void
 }
 
+/* ================= PRICE FORMATTER ================= */
+
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat("fr-FR", {
+    style: "currency",
+    currency: "XOF",
+    maximumFractionDigits: 0,
+  }).format(price)
+}
+
 export default function PropertyDetail({
   propertyId,
   onNavigate
 }: PropertyDetailProps) {
+
   const { t } = useTranslation()
   const property = properties.find(p => p.id === propertyId)
   const [imageIndex, setImageIndex] = useState(0)
@@ -32,22 +43,27 @@ export default function PropertyDetail({
 
   const whatsappMessage = t('propertyDetail.whatsappMessage', {
     title: property.title,
-    price: (property.price / 1_000_000).toFixed(0)
+    price: formatPrice(property.price)
   })
 
   const whatsappUrl = `https://wa.me/221774308344?text=${encodeURIComponent(
     whatsappMessage
   )}`
 
+  const images = property.images ?? []
+  const features = property.features ?? []
+
   const nextImage = () => {
-    setImageIndex((prev) =>
-      prev === property.images.length - 1 ? 0 : prev + 1
+    if (images.length === 0) return
+    setImageIndex(prev =>
+      prev === images.length - 1 ? 0 : prev + 1
     )
   }
 
   const prevImage = () => {
-    setImageIndex((prev) =>
-      prev === 0 ? property.images.length - 1 : prev - 1
+    if (images.length === 0) return
+    setImageIndex(prev =>
+      prev === 0 ? images.length - 1 : prev - 1
     )
   }
 
@@ -57,51 +73,59 @@ export default function PropertyDetail({
       {/* ================= HERO GALLERY ================= */}
       <section className="relative h-[90vh] overflow-hidden bg-black">
 
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={imageIndex}
-            src={property.images[imageIndex]}
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </AnimatePresence>
+        {images.length > 0 && (
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={imageIndex}
+              src={images[imageIndex]}
+              initial={{ scale: 1.1, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8 }}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </AnimatePresence>
+        )}
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
         {/* NAV BUTTONS */}
-        <button
-          onClick={prevImage}
-          className="absolute left-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
-        >
-          ←
-        </button>
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={prevImage}
+              className="absolute left-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
+            >
+              ←
+            </button>
 
-        <button
-          onClick={nextImage}
-          className="absolute right-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
-        >
-          →
-        </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
+            >
+              →
+            </button>
+          </>
+        )}
 
         {/* THUMBNAILS */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-4">
-          {property.images.map((img, i) => (
-            <motion.img
-              key={i}
-              src={img}
-              onClick={() => setImageIndex(i)}
-              whileHover={{ scale: 1.05 }}
-              className={`w-24 h-16 object-cover rounded-lg cursor-pointer transition border-2 ${
-                i === imageIndex
-                  ? 'border-white'
-                  : 'border-transparent opacity-60 hover:opacity-100'
-              }`}
-            />
-          ))}
-        </div>
+        {images.length > 0 && (
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-4">
+            {images.map((img, i) => (
+              <motion.img
+                key={i}
+                src={img}
+                onClick={() => setImageIndex(i)}
+                whileHover={{ scale: 1.05 }}
+                className={`w-24 h-16 object-cover rounded-lg cursor-pointer transition border-2 ${
+                  i === imageIndex
+                    ? 'border-white'
+                    : 'border-transparent opacity-60 hover:opacity-100'
+                }`}
+              />
+            ))}
+          </div>
+        )}
 
         {/* BACK BUTTON */}
         <button
@@ -138,14 +162,12 @@ export default function PropertyDetail({
           {/* MAIN CONTENT */}
           <div>
 
-            {/* METRICS */}
             <div className="grid grid-cols-3 gap-20 pb-16 border-b border-blue-950/10">
               <LuxuryMetric icon={Bed} value={property.bedrooms} label="Suites" />
               <LuxuryMetric icon={Bath} value={property.bathrooms} label="Salles d'eau" />
               <LuxuryMetric icon={Maximize} value={property.surface} label="M²" />
             </div>
 
-            {/* DESCRIPTION */}
             <div className="pt-20">
               <LuxuryTitle>
                 {t('propertyDetail.presentation')}
@@ -156,14 +178,13 @@ export default function PropertyDetail({
               </p>
             </div>
 
-            {/* FEATURES */}
             <div className="pt-24">
               <LuxuryTitle>
                 {t('propertyDetail.features')}
               </LuxuryTitle>
 
               <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
-                {property.features.map((feature, i) => (
+                {features.map((feature, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, x: -20 }}
@@ -180,7 +201,7 @@ export default function PropertyDetail({
 
           </div>
 
-          {/* ================= SIDEBAR ================= */}
+          {/* SIDEBAR */}
           <motion.aside
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -192,7 +213,7 @@ export default function PropertyDetail({
               </div>
 
               <div className="text-6xl font-bold mt-6 tracking-tight">
-                {(property.price / 1_000_000).toFixed(0)} M FCFA
+                {formatPrice(property.price)}
               </div>
             </div>
 

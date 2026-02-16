@@ -1,4 +1,5 @@
-import { useState, FormEvent, useRef } from 'react'
+import { useState, useRef } from 'react'
+import type { FormEvent } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import {
@@ -21,7 +22,7 @@ function LuxuryButton({ children }: { children: React.ReactNode }) {
     const r = ref.current.getBoundingClientRect()
     const x = e.clientX - r.left - r.width / 2
     const y = e.clientY - r.top - r.height / 2
-    ref.current.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`
+    ref.current.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`
   }
 
   return (
@@ -30,16 +31,14 @@ function LuxuryButton({ children }: { children: React.ReactNode }) {
       onMouseMove={move}
       onMouseLeave={() => (ref.current!.style.transform = 'translate(0,0)')}
       className="relative overflow-hidden rounded-2xl px-14 py-5 
-      font-semibold tracking-widest uppercase text-sm
+      font-semibold tracking-[0.35em] uppercase text-xs
       bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900
-      border border-blue-700 shadow-2xl
+      border border-blue-700 shadow-[0_20px_60px_rgba(0,0,0,0.5)]
       transition-all duration-300 hover:scale-[1.03]"
     >
       <span className="relative z-10 flex items-center gap-3 text-white">
         {children}
       </span>
-
-      <span className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-40 transition duration-500 blur-xl" />
     </button>
   )
 }
@@ -49,10 +48,11 @@ function LuxuryButton({ children }: { children: React.ReactNode }) {
 export default function Contact() {
   const { t } = useTranslation()
   const [loading, setLoading] = useState(false)
-  const [projectType, setProjectType] = useState<'buy' | 'sell' | 'invest'>('buy')
+  const [projectType, setProjectType] =
+    useState<'buy' | 'sell' | 'invest' | 'rent'>('buy')
 
   const { scrollY } = useScroll()
-  const yParallax = useTransform(scrollY, [0, 600], [0, 120])
+  const yParallax = useTransform(scrollY, [0, 600], [0, 140])
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -61,54 +61,57 @@ export default function Contact() {
   }
 
   return (
-    <div className="relative min-h-screen bg-blue-950 text-white overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-b from-blue-950 via-[#08152c] to-black text-white overflow-hidden">
 
-      {/* BACKGROUND LIGHT */}
+      {/* LIGHT EFFECTS */}
       <motion.div
         style={{ y: yParallax }}
-        className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-700/20 blur-3xl"
+        className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-blue-600/20 blur-[200px]"
       />
 
       {/* HERO */}
-      <section className="pt-40 pb-24 px-6 text-center">
-        <div className="max-w-4xl mx-auto">
-          <span className="uppercase tracking-[0.4em] text-xs text-blue-400 flex items-center justify-center gap-2">
+      <section className="pt-44 pb-28 px-6 text-center">
+        <div className="max-w-5xl mx-auto">
+
+          <span className="uppercase tracking-[0.6em] text-[11px] text-blue-400 flex items-center justify-center gap-2">
             <Sparkles className="w-4 h-4" />
             {t('contact.hero.tagline')}
           </span>
 
-          <h1 className="text-5xl md:text-6xl font-serif mt-8 leading-tight">
-            {t('contact.hero.title1')}
-            <span className="block text-blue-400">
-              {t('contact.hero.title2')}
+          <h1 className="text-5xl md:text-7xl font-light mt-10 leading-[1.1] tracking-tight">
+            Discutons de votre
+            <span className="block font-semibold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+              projet immobilier d’exception
             </span>
           </h1>
 
-          <p className="mt-8 text-blue-200/70 max-w-2xl mx-auto">
-            {t('contact.hero.description')}
+          <p className="mt-10 text-blue-200/70 max-w-3xl mx-auto text-lg leading-relaxed">
+            Nous vous accompagnons dans chaque décision stratégique :
+            acquisition, vente, location ou investissement haut rendement.
           </p>
         </div>
       </section>
 
       {/* CONTENT */}
-      <section className="pb-32 px-6">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-14">
+      <section className="pb-36 px-6">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-16">
 
           {/* FORM */}
           <form
             onSubmit={handleSubmit}
-            className="lg:col-span-2 bg-blue-900/40
-            backdrop-blur-2xl border border-blue-800
-            rounded-3xl p-12 shadow-[0_0_80px_rgba(0,0,0,0.6)]
-            space-y-12"
+            className="lg:col-span-2 bg-white/5
+            backdrop-blur-3xl border border-white/10
+            rounded-3xl p-14 shadow-[0_0_100px_rgba(0,0,0,0.6)]
+            space-y-14"
           >
 
             {/* PROJECT TYPE */}
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-4 gap-6">
               {[
-                { id: 'buy', label: t('contact.form.buy') },
-                { id: 'sell', label: t('contact.form.sell') },
-                { id: 'invest', label: t('contact.form.invest') }
+                { id: 'buy', label: 'Acheter' },
+                { id: 'sell', label: 'Vendre' },
+                { id: 'rent', label: 'Location' },
+                { id: 'invest', label: 'Investir' }
               ].map((item) => (
                 <button
                   key={item.id}
@@ -118,10 +121,10 @@ export default function Contact() {
                   ${
                     projectType === item.id
                       ? 'border-blue-400 bg-blue-800/60 shadow-lg scale-105'
-                      : 'border-blue-800 bg-blue-950/50 hover:bg-blue-900/50'
+                      : 'border-white/10 bg-white/5 hover:bg-white/10'
                   }`}
                 >
-                  <p className="tracking-widest uppercase text-sm">
+                  <p className="tracking-[0.35em] uppercase text-xs">
                     {item.label}
                   </p>
                 </button>
@@ -129,9 +132,9 @@ export default function Contact() {
             </div>
 
             {/* INPUTS */}
-            <LuxuryInput label={t('contact.form.name')} />
-            <LuxuryInput label={t('contact.form.email')} type="email" />
-            <LuxuryInput label={t('contact.form.phone')} type="tel" />
+            <LuxuryInput label="Nom complet" />
+            <LuxuryInput label="Adresse email" type="email" />
+            <LuxuryInput label="Téléphone" type="tel" />
 
             {projectType === 'buy' && (
               <>
@@ -142,28 +145,35 @@ export default function Contact() {
 
             {projectType === 'sell' && (
               <>
-                <LuxuryInput label="Type de bien à vendre" />
+                <LuxuryInput label="Type de bien" />
                 <LuxuryInput label="Localisation du bien" />
+              </>
+            )}
+
+            {projectType === 'rent' && (
+              <>
+                <LuxuryInput label="Budget mensuel (FCFA)" />
+                <LuxuryInput label="Durée souhaitée" />
               </>
             )}
 
             {projectType === 'invest' && (
               <>
                 <LuxuryInput label="Montant d'investissement" />
-                <LuxuryInput label="Durée d'investissement souhaitée" />
+                <LuxuryInput label="Objectif de rendement" />
               </>
             )}
 
-            <LuxuryTextarea label={t('contact.form.message')} />
+            <LuxuryTextarea label="Décrivez votre projet" />
 
             <LuxuryButton>
               <Send className="w-4 h-4" />
-              {loading ? 'Envoi...' : t('contact.form.button')}
+              {loading ? 'Envoi en cours...' : 'Envoyer la demande'}
             </LuxuryButton>
 
-            <div className="flex items-center gap-3 text-xs tracking-wider text-blue-300/60 uppercase">
+            <div className="flex items-center gap-3 text-[10px] tracking-[0.35em] text-blue-300/60 uppercase">
               <ShieldCheck className="w-4 h-4" />
-              {t('contact.form.security')}
+              Données strictement confidentielles
             </div>
 
           </form>
@@ -171,16 +181,16 @@ export default function Contact() {
           {/* SIDEBAR */}
           <div className="space-y-10">
 
-            <div className="bg-blue-900/40 backdrop-blur-xl border border-blue-800 rounded-3xl p-10">
-              <h3 className="text-lg font-serif mb-8 tracking-wide">
-                {t('contact.sidebar.direct')}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12">
+              <h3 className="text-xl font-light mb-10 tracking-wide">
+                Contact direct
               </h3>
 
-              <p className="flex items-center gap-4 text-blue-300 mb-5">
+              <p className="flex items-center gap-4 text-blue-300 mb-6">
                 <Phone /> +221 77 430 83 44
               </p>
 
-              <p className="flex items-center gap-4 text-blue-300 mb-5">
+              <p className="flex items-center gap-4 text-blue-300 mb-6">
                 <Mail /> contact@absimmo.sn
               </p>
 
@@ -192,8 +202,8 @@ export default function Contact() {
             <a
               href="https://wa.me/221774308344"
               target="_blank"
-              className="block text-center py-5 rounded-2xl font-semibold tracking-widest uppercase text-sm
-              bg-green-600 hover:bg-green-500 transition"
+              className="block text-center py-5 rounded-2xl font-semibold tracking-[0.35em] uppercase text-xs
+              bg-green-600 hover:bg-green-500 transition shadow-xl"
             >
               <MessageCircle className="inline mr-2 w-4 h-4" />
               WhatsApp Business
@@ -207,7 +217,7 @@ export default function Contact() {
   )
 }
 
-/* ================= LUXURY INPUT ================= */
+/* ================= INPUTS ================= */
 
 function LuxuryInput({ label, type = 'text' }: { label: string, type?: string }) {
   return (
@@ -217,27 +227,26 @@ function LuxuryInput({ label, type = 'text' }: { label: string, type?: string })
         required
         placeholder=" "
         className="peer w-full bg-transparent 
-        border-b border-white/30
-        py-5 text-white tracking-wide
+        border-b border-white/20
+        py-6 text-white tracking-wide
         placeholder-transparent
-        focus:border-white focus:outline-none
+        focus:border-blue-400 focus:outline-none
         transition-all duration-500"
       />
 
       <label
-        className="absolute left-0 top-5 text-white/60 text-sm tracking-wider
+        className="absolute left-0 top-6 text-white/50 text-xs tracking-[0.25em]
         transition-all duration-300
-        peer-placeholder-shown:top-5
+        peer-placeholder-shown:top-6
         peer-focus:-top-3
-        peer-focus:text-xs
-        peer-focus:text-white"
+        peer-focus:text-[10px]
+        peer-focus:text-blue-400"
       >
         {label}
       </label>
     </div>
   )
 }
-
 
 function LuxuryTextarea({ label }: { label: string }) {
   return (
@@ -247,24 +256,23 @@ function LuxuryTextarea({ label }: { label: string }) {
         required
         placeholder=" "
         className="peer w-full bg-transparent 
-        border-b border-white/30
-        py-5 text-white tracking-wide
+        border-b border-white/20
+        py-6 text-white tracking-wide
         placeholder-transparent resize-none
-        focus:border-white focus:outline-none
+        focus:border-blue-400 focus:outline-none
         transition-all duration-500"
       />
 
       <label
-        className="absolute left-0 top-5 text-white/60 text-sm tracking-wider
+        className="absolute left-0 top-6 text-white/50 text-xs tracking-[0.25em]
         transition-all duration-300
-        peer-placeholder-shown:top-5
+        peer-placeholder-shown:top-6
         peer-focus:-top-3
-        peer-focus:text-xs
-        peer-focus:text-white"
+        peer-focus:text-[10px]
+        peer-focus:text-blue-400"
       >
         {label}
       </label>
     </div>
   )
 }
-
