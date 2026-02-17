@@ -4,7 +4,7 @@ import {
   Landmark,
   ShieldCheck,
   Briefcase,
-  MapPin
+  MapPin,  Bed, Bath,
 } from 'lucide-react'
 import Button from '../components/Button'
 import { properties } from '../data/properties'
@@ -21,138 +21,161 @@ export default function Home({ onNavigate }: HomeProps) {
     <div className="bg-[#f6f7f5] text-blue-950 overflow-hidden">
 
       {/* ================= HERO CINEMATIC ================= */}
-      <section className="relative min-h-screen flex items-center">
+     <section className="relative min-h-screen flex items-center overflow-hidden">
 
-        <motion.img
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 6 }}
-          src="https://www.mysweetimmo.com/uy7i_73zhnb/uploads/2020/08/Capture-decran-2020-08-31-a-14.08.47.png"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+  {/* IMAGE */}
+  <motion.img
+    initial={{ scale: 1.1 }}
+    animate={{ scale: 1 }}
+    transition={{ duration: 6 }}
+    src="https://www.mysweetimmo.com/uy7i_73zhnb/uploads/2020/08/Capture-decran-2020-08-31-a-14.08.47.png"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-950/95 via-blue-950/85 to-[#0b1d3a]" />
+  {/* OVERLAY */}
+  <div className="absolute inset-0 bg-gradient-to-b from-blue-950/95 via-blue-950/85 to-[#0b1d3a]" />
 
-        <div className="relative z-10 max-w-[1500px] mx-auto px-12 grid lg:grid-cols-2 gap-28 items-center pt-40">
+  <div className="relative z-10 w-full max-w-[1500px] mx-auto 
+                  px-6 sm:px-10 lg:px-12
+                  grid lg:grid-cols-2 
+                  gap-16 lg:gap-28 
+                  items-center 
+                  pt-32 sm:pt-40">
 
-          {/* LEFT */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-white"
-          >
-            <span className="uppercase tracking-[0.6em] text-blue-300 text-xs">
-              {t('home.hero.tagline')}
-            </span>
+    {/* ================= LEFT ================= */}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      className="text-white text-center lg:text-left"
+    >
 
-            <h1 className="text-6xl xl:text-[82px] font-light leading-[1.02] mt-12 tracking-tight">
-              {t('home.hero.title1')}
-              <br />
-              <span className="font-semibold bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent">
-                {t('home.hero.title2')}
-              </span>
-            </h1>
-
-            <p className="text-blue-200 mt-12 max-w-xl text-lg leading-relaxed">
-              {t('home.hero.description')}
-            </p>
-
-            <div className="mt-20 flex flex-wrap gap-8">
-
-  {/* ===== EXPLORER PREMIUM ===== */}
-  <motion.button
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.97 }}
-    onClick={() => onNavigate('properties')}
-    className="relative group overflow-hidden px-12 py-6 rounded-2xl 
-           bg-gradient-to-r from-red-600 via-red-700 to-red-800
-           text-white uppercase tracking-[0.35em] text-xs
-           shadow-[0_20px_60px_rgba(220,38,38,0.45)]
-           transition-all duration-500"
-
-  >
-
-    {/* Glow animation */}
-    <span className="absolute inset-0 bg-red-400/10 opacity-0 group-hover:opacity-100 transition duration-500" />
-
-    {/* Shine effect */}
-    {/* Shine ultra rouge premium */}
-<span className="absolute -left-40 top-0 w-56 h-full
-                 bg-gradient-to-r 
-                 from-transparent 
-                 via-red-500/90 
-                 to-transparent
-                 blur-lg
-                 skew-x-12
-                 group-hover:left-[140%]
-                 transition-all duration-[1300ms] ease-out" />
-
-<span className="relative z-10 flex items-center gap-4">
-  Explorer
-  <span className="text-lg transition-all duration-500 group-hover:translate-x-3 group-hover:scale-110">
-    →
-  </span>
-</span>
-
-  </motion.button>
-
-  {/* ===== CONTACT LUXURY GLASS ===== */}
-  <motion.button
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.97 }}
-    onClick={() => onNavigate('contact')}
-    className="relative group overflow-hidden px-12 py-6 rounded-2xl 
-               border border-white/30
-               bg-white/10 backdrop-blur-xl
-               text-white uppercase tracking-[0.35em] text-xs
-               shadow-[0_20px_60px_rgba(0,0,0,0.25)]
-               transition-all duration-500"
-  >
-
-    {/* Hover background */}
-    <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition duration-500" />
-
-    <span className="relative z-10 flex items-center gap-4 
-                     group-hover:text-blue-950 transition duration-500">
-      Contact
-      <span className="text-lg transition-transform duration-500 group-hover:translate-x-2">
-        →
+      <span className="uppercase tracking-[0.4em] sm:tracking-[0.6em] text-blue-300 text-[10px] sm:text-xs">
+        {t('home.hero.tagline')}
       </span>
-    </span>
-  </motion.button>
 
-</div>
+      <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-[82px] 
+                     font-light leading-[1.05] 
+                     mt-8 sm:mt-12 tracking-tight">
+        {t('home.hero.title1')}
+        <br />
+        <span className="font-semibold bg-gradient-to-r 
+                         from-white to-blue-300 
+                         bg-clip-text text-transparent">
+          {t('home.hero.title2')}
+        </span>
+      </h1>
 
-          </motion.div>
+      <p className="text-blue-200 mt-8 sm:mt-12 
+                    max-w-xl mx-auto lg:mx-0
+                    text-base sm:text-lg 
+                    leading-relaxed">
+        {t('home.hero.description')}
+      </p>
 
-          {/* RIGHT STATS GLASS */}
-          <div className="hidden lg:grid grid-cols-2 gap-6">
-            {[
-              { key: 'assets', value: '300+' },
-              { key: 'clients', value: '500+' },
-              { key: 'experience', value: '10+' },
-              { key: 'zone', value: t('home.stats.zoneValue') }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.2 }}
-                className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 text-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
-              >
-                <div className="text-4xl font-semibold tracking-tight">
-                  {item.value}
-                </div>
-                <p className="text-xs tracking-[0.4em] text-blue-300 mt-3 uppercase">
-                  {t(`home.stats.${item.key}`)}
-                </p>
-              </motion.div>
-            ))}
+      {/* BUTTONS */}
+      <div className="mt-12 sm:mt-16 lg:mt-20 
+                      flex flex-col sm:flex-row 
+                      justify-center lg:justify-start 
+                      gap-6 sm:gap-8">
+
+        {/* ===== EXPLORER ===== */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          onClick={() => onNavigate('properties')}
+          className="relative group overflow-hidden 
+                     px-8 sm:px-12 py-4 sm:py-6 
+                     rounded-2xl 
+                     bg-gradient-to-r from-red-600 via-red-700 to-red-800
+                     text-white uppercase tracking-[0.3em] sm:tracking-[0.35em] 
+                     text-[10px] sm:text-xs
+                     shadow-[0_20px_60px_rgba(220,38,38,0.45)]
+                     transition-all duration-500"
+        >
+
+          <span className="absolute inset-0 bg-red-400/10 opacity-0 group-hover:opacity-100 transition duration-500" />
+
+          <span className="absolute -left-40 top-0 w-56 h-full
+                           bg-gradient-to-r from-transparent via-red-500/90 to-transparent
+                           blur-lg skew-x-12
+                           group-hover:left-[140%]
+                           transition-all duration-[1300ms] ease-out" />
+
+          <span className="relative z-10 flex items-center justify-center gap-3 sm:gap-4">
+            Explorer
+            <span className="text-lg transition-all duration-500 group-hover:translate-x-3">
+              →
+            </span>
+          </span>
+
+        </motion.button>
+
+        {/* ===== CONTACT ===== */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          onClick={() => onNavigate('contact')}
+          className="relative group overflow-hidden 
+                     px-8 sm:px-12 py-4 sm:py-6 
+                     rounded-2xl 
+                     border border-white/30
+                     bg-white/10 backdrop-blur-xl
+                     text-white uppercase tracking-[0.3em] sm:tracking-[0.35em] 
+                     text-[10px] sm:text-xs
+                     shadow-[0_20px_60px_rgba(0,0,0,0.25)]
+                     transition-all duration-500"
+        >
+
+          <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition duration-500" />
+
+          <span className="relative z-10 flex items-center justify-center gap-3 sm:gap-4 
+                           group-hover:text-blue-950 transition duration-500">
+            Contact
+            <span className="text-lg transition-transform duration-500 group-hover:translate-x-2">
+              →
+            </span>
+          </span>
+
+        </motion.button>
+
+      </div>
+    </motion.div>
+
+    {/* ================= RIGHT STATS ================= */}
+    <div className="hidden md:grid lg:grid grid-cols-2 gap-4 sm:gap-6 mt-12 lg:mt-0">
+
+      {[
+        { key: 'assets', value: '300+' },
+        { key: 'clients', value: '500+' },
+        { key: 'experience', value: '10+' },
+        { key: 'zone', value: t('home.stats.zoneValue') }
+      ].map((item, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: i * 0.2 }}
+          className="bg-white/5 backdrop-blur-xl 
+                     border border-white/10 
+                     p-6 sm:p-8 
+                     text-white rounded-2xl 
+                     shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
+        >
+          <div className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
+            {item.value}
           </div>
+          <p className="text-[10px] sm:text-xs tracking-[0.35em] text-blue-300 mt-3 uppercase">
+            {t(`home.stats.${item.key}`)}
+          </p>
+        </motion.div>
+      ))}
 
-        </div>
-      </section>
+    </div>
+
+  </div>
+</section>
+
 
       {/* ================= MÉTHODE PREMIUM ================= */}
       <section className="py-32 bg-white">
@@ -185,127 +208,255 @@ export default function Home({ onNavigate }: HomeProps) {
 
       {/* ================= OPPORTUNITÉS LUXE ================= */}
       {/* ================= OPPORTUNITÉS SIGNATURE ================= */}
-<section className="py-32 bg-[#f6f7f5]">
-  <div className="max-w-[1500px] mx-auto px-12">
+{/* ================= COLLECTION SIGNATURE ================= */}
+{/* ================= COLLECTION SIGNATURE ================= */}
+<section className="py-24 md:py-36 bg-[#f6f7f5] overflow-hidden">
+  <div className="max-w-[1600px] mx-auto px-6 md:px-10">
 
-    <div className="flex justify-between items-end mb-16">
-      <div>
-        <span className="uppercase tracking-[0.55em] text-gray-400 text-[10px]">
-          {t('home.opportunities.label')}
-        </span>
+    {/* HEADER */}
+    <div className="text-center mb-16 md:mb-24 px-4">
+      <span className="uppercase tracking-[0.5em] md:tracking-[0.6em] text-gray-400 text-[10px]">
+        {t('home.opportunities.label')}
+      </span>
 
-        {/* Titre réduit + plus élégant */}
-        <h2 className="text-[38px] font-light mt-4 tracking-tight text-blue-950">
-          {t('home.opportunities.title')}
-        </h2>
-      </div>
+      <h2 className="text-3xl sm:text-4xl md:text-6xl font-light mt-6 tracking-tight text-blue-950 leading-tight">
+        {t('home.opportunities.title')}
+      </h2>
 
-      <Button
-        variant="outline"
-        onClick={() => onNavigate('properties')}
-        className="tracking-[0.35em] text-xs"
-      >
-        {t('home.opportunities.cta')}
-      </Button>
+      <div className="w-16 md:w-24 h-[2px] bg-red-600 mx-auto mt-6 md:mt-8" />
     </div>
 
-    <div className="grid lg:grid-cols-2 gap-12">
-      {featuredProperties.map((property) => (
+    {/* GRID RESPONSIVE */}
+    <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-16">
+      {featuredProperties.map((property, index) => (
         <motion.div
           key={property.id}
-          whileHover={{ y: -6 }}
-          transition={{ duration: 0.4 }}
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: index * 0.15 }}
           onClick={() => onNavigate('property', property.id)}
-          className="group cursor-pointer bg-white rounded-3xl overflow-hidden
-                     shadow-[0_15px_50px_rgba(0,0,0,0.06)]
-                     hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]
-                     transition duration-500"
+          className="group relative cursor-pointer rounded-3xl md:rounded-[40px] overflow-hidden
+                     shadow-[0_15px_50px_rgba(0,0,0,0.08)]
+                     hover:shadow-[0_40px_120px_rgba(0,0,0,0.18)]
+                     transition duration-700"
         >
-          {/* IMAGE PLUS RAFFINÉE */}
-          <div className="relative h-[300px] overflow-hidden">
+
+          {/* IMAGE */}
+          <div className="relative h-[380px] sm:h-[420px] md:h-[520px] overflow-hidden">
+
             <img
               src={property.images?.[0]}
-              className="w-full h-full object-cover transition duration-[900ms] ease-out group-hover:scale-105"
+              className="w-full h-full object-cover
+                         transition duration-[1200ms] ease-out
+                         group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-          </div>
 
-          <div className="p-10">
+            {/* OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-t 
+                            from-black/85 via-black/40 to-transparent" />
 
-            <div className="flex justify-between text-[10px] tracking-[0.4em] text-gray-400 uppercase mb-6">
-              <span>{property.type}</span>
-              <span className="flex items-center gap-2">
-                <MapPin className="w-3 h-3" />
-                {property.location}
-              </span>
+            {/* BADGE LOCATION */}
+            <div className="absolute top-4 left-4 md:top-8 md:left-8
+                            bg-white/10 backdrop-blur-xl
+                            border border-white/20
+                            text-white text-[9px] md:text-[10px]
+                            tracking-[0.3em] uppercase
+                            px-4 md:px-6 py-2 rounded-full">
+              Local à louer
             </div>
 
-            <h3 className="text-[22px] font-medium mb-8 tracking-tight text-blue-950 group-hover:text-black transition">
-              {property.title}
-            </h3>
+            {/* PRICE */}
+            <div className="absolute top-4 right-4 md:top-8 md:right-8
+                            bg-red-600 text-white
+                            text-xs md:text-sm font-semibold
+                            px-4 md:px-6 py-2 rounded-full
+                            shadow-xl">
+              {new Intl.NumberFormat("fr-FR", {
+                style: "currency",
+                currency: "XOF",
+                maximumFractionDigits: 0
+              }).format(property.price)} / mois
+            </div>
 
-            <div className="flex justify-between items-end">
+            {/* CONTENT BOTTOM */}
+            <div className="absolute bottom-6 md:bottom-12 left-6 md:left-12 right-6 md:right-12">
 
-              {/* PRIX NON ARRONDI – FORMAT BANCAIRE */}
-              <div>
-                <p className="text-[10px] text-gray-400 uppercase tracking-[0.35em] mb-3">
-                  {t('home.opportunities.price')}
-                </p>
-
-                <div className="text-[26px] font-semibold tracking-tight text-blue-950">
-                  {new Intl.NumberFormat("fr-FR", {
-                    style: "currency",
-                    currency: "XOF",
-                    maximumFractionDigits: 0
-                  }).format(property.price)}
-                </div>
+              {/* LOCATION + SURFACE */}
+              <div className="flex justify-between items-center text-white/80 text-[10px] md:text-xs tracking-[0.3em] uppercase mb-4 md:mb-6">
+                <span className="flex items-center gap-2">
+                  <MapPin className="w-3 h-3 md:w-4 md:h-4" />
+                  {property.location}
+                </span>
+                <span>{property.surface} m²</span>
               </div>
 
-              <div className="text-sm text-gray-500 tracking-wide">
-                {property.surface} m²
+              {/* TITLE */}
+              <h3 className="text-xl sm:text-2xl md:text-4xl font-light text-white tracking-tight leading-tight
+                             group-hover:translate-y-[-6px]
+                             transition duration-700">
+                {property.title}
+              </h3>
+
+              {/* NEW: PROPERTY DETAILS */}
+              <div className="flex items-center gap-6 mt-4 text-white/80 text-xs md:text-sm">
+
+                <span className="flex items-center gap-2">
+                  <Bed className="w-4 h-4" />
+                  {property.bedrooms} Chambres
+                </span>
+
+                <span className="flex items-center gap-2">
+                  <Bath className="w-4 h-4" />
+                  {property.bathrooms} SDB
+                </span>
+
+              </div>
+
+              {/* CTA */}
+              <div className="mt-6 flex items-center gap-3 text-white/70
+                              group-hover:text-white transition duration-500">
+                <span className="uppercase tracking-[0.35em] text-[10px] md:text-xs">
+                  Voir le local
+                </span>
+                <span className="text-lg group-hover:translate-x-3 transition duration-500">
+                  →
+                </span>
               </div>
 
             </div>
-
           </div>
         </motion.div>
       ))}
+    </div>
+
+    {/* ULTRA PREMIUM BUTTON */}
+    <div className="flex justify-center mt-20 md:mt-28">
+
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.97 }}
+        onClick={() => onNavigate('properties')}
+        className="relative group overflow-hidden
+                   px-10 md:px-16 py-4 md:py-6
+                   rounded-full
+                   bg-gradient-to-r from-blue-950 via-blue-900 to-blue-950
+                   text-white uppercase tracking-[0.4em] text-[10px] md:text-xs
+                   shadow-[0_25px_80px_rgba(0,0,0,0.25)]
+                   transition-all duration-500"
+      >
+
+        <span className="absolute inset-0 bg-blue-400/10 opacity-0 group-hover:opacity-100 transition duration-500" />
+
+        <span className="absolute -left-40 top-0 w-56 h-full
+                         bg-gradient-to-r from-transparent via-white/40 to-transparent
+                         blur-lg skew-x-12
+                         group-hover:left-[140%]
+                         transition-all duration-[1300ms] ease-out" />
+
+        <span className="relative z-10 flex items-center gap-4">
+          Voir tous nos locaux à louer
+          <span className="text-lg transition-all duration-500 group-hover:translate-x-3">
+            →
+          </span>
+        </span>
+
+      </motion.button>
+
     </div>
 
   </div>
 </section>
 
 
+
+
       {/* ================= CTA SIGNATURE ================= */}
-      <section className="py-40 bg-gradient-to-b from-blue-950 to-black text-white text-center relative overflow-hidden">
+     <section className="relative py-24 sm:py-32 md:py-40 
+                    bg-gradient-to-b from-blue-950 to-black 
+                    text-white text-center overflow-hidden">
 
-        <div className="absolute w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[160px] top-[-150px] left-[-150px]" />
-        <div className="absolute w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-[160px] bottom-[-150px] right-[-150px]" />
+  {/* BACKGROUND GLOW */}
+  <div className="absolute w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] 
+                  bg-blue-600/20 rounded-full blur-[120px] sm:blur-[160px] 
+                  top-[-120px] left-[-120px]" />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-12">
+  <div className="absolute w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] 
+                  bg-blue-400/20 rounded-full blur-[120px] sm:blur-[160px] 
+                  bottom-[-120px] right-[-120px]" />
 
-          <h2 className="text-5xl font-light mb-10 tracking-tight">
-            {t('home.cta.title')}
-          </h2>
+  <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-10 md:px-12">
 
-          <p className="text-blue-200 mb-16 leading-relaxed">
-            {t('home.cta.text')}
-          </p>
+    {/* TITLE */}
+    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
+                   font-light mb-8 sm:mb-10 
+                   tracking-tight leading-tight">
+      {t('home.cta.title')}
+    </h2>
 
-          <Button
-            size="lg"
-            onClick={() => onNavigate('contact')}
-            className="tracking-[0.4em]"
-          >
-            {t('home.cta.button')}
-          </Button>
+    {/* TEXT */}
+    <p className="text-blue-200 mb-12 sm:mb-16 
+                  leading-relaxed 
+                  text-base sm:text-lg 
+                  max-w-2xl mx-auto">
+      {t('home.cta.text')}
+    </p>
 
-          <p className="mt-20 text-xs tracking-[0.5em] text-blue-300 uppercase">
-            {t('home.cta.footer')}
-          </p>
+    {/* ===== ULTRA PREMIUM CONTACT BUTTON ===== */}
+    <div className="flex justify-center">
 
-        </div>
-      </section>
+  <motion.button
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.97 }}
+    onClick={() => onNavigate('contact')}
+    className="relative group overflow-hidden
+               px-10 sm:px-14 md:px-16
+               py-4 sm:py-5 md:py-6
+               rounded-full
+               bg-gradient-to-r from-red-600 via-red-700 to-red-800
+               text-white
+               uppercase tracking-[0.35em] sm:tracking-[0.4em]
+               text-[10px] sm:text-xs
+               font-semibold
+               shadow-[0_25px_80px_rgba(220,38,38,0.45)]
+               transition-all duration-500"
+  >
+
+    {/* Hover overlay */}
+    <span className="absolute inset-0 
+                     bg-gradient-to-r from-red-700 via-red-800 to-red-900
+                     opacity-0 group-hover:opacity-100
+                     transition duration-500" />
+
+    {/* Shine effect rouge intense */}
+    <span className="absolute -left-40 top-0 w-56 h-full
+                     bg-gradient-to-r from-transparent via-red-400/80 to-transparent
+                     blur-lg skew-x-12
+                     group-hover:left-[140%]
+                     transition-all duration-[1300ms] ease-out" />
+
+    <span className="relative z-10 flex items-center gap-4">
+      {t('home.cta.button')}
+      <span className="text-lg transition-all duration-500 group-hover:translate-x-3 group-hover:scale-110">
+        →
+      </span>
+    </span>
+
+  </motion.button>
+
+</div>
+
+
+    {/* FOOTER */}
+    <p className="mt-14 sm:mt-20 
+                  text-[10px] sm:text-xs 
+                  tracking-[0.4em] sm:tracking-[0.5em] 
+                  text-blue-300 uppercase">
+      {t('home.cta.footer')}
+    </p>
+
+  </div>
+</section>
 
     </div>
   )

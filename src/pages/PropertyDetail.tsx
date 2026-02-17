@@ -22,13 +22,12 @@ interface PropertyDetailProps {
 
 /* ================= PRICE FORMATTER ================= */
 
-const formatPrice = (price: number) => {
-  return new Intl.NumberFormat("fr-FR", {
+const formatPrice = (price: number) =>
+  new Intl.NumberFormat("fr-FR", {
     style: "currency",
     currency: "XOF",
     maximumFractionDigits: 0,
   }).format(price)
-}
 
 export default function PropertyDetail({
   propertyId,
@@ -41,6 +40,9 @@ export default function PropertyDetail({
 
   if (!property) return null
 
+  const images = property.images ?? []
+  const features = property.features ?? []
+
   const whatsappMessage = t('propertyDetail.whatsappMessage', {
     title: property.title,
     price: formatPrice(property.price)
@@ -50,28 +52,21 @@ export default function PropertyDetail({
     whatsappMessage
   )}`
 
-  const images = property.images ?? []
-  const features = property.features ?? []
-
   const nextImage = () => {
-    if (images.length === 0) return
-    setImageIndex(prev =>
-      prev === images.length - 1 ? 0 : prev + 1
-    )
+    if (!images.length) return
+    setImageIndex(prev => prev === images.length - 1 ? 0 : prev + 1)
   }
 
   const prevImage = () => {
-    if (images.length === 0) return
-    setImageIndex(prev =>
-      prev === 0 ? images.length - 1 : prev - 1
-    )
+    if (!images.length) return
+    setImageIndex(prev => prev === 0 ? images.length - 1 : prev - 1)
   }
 
   return (
-    <div className="bg-white text-blue-950 pt-20">
+    <div className="bg-white text-blue-950 pt-16 md:pt-20">
 
-      {/* ================= HERO GALLERY ================= */}
-      <section className="relative h-[90vh] overflow-hidden bg-black">
+      {/* ================= HERO ================= */}
+      <section className="relative h-[60vh] sm:h-[75vh] md:h-[85vh] lg:h-[90vh] overflow-hidden bg-black">
 
         {images.length > 0 && (
           <AnimatePresence mode="wait">
@@ -87,37 +82,64 @@ export default function PropertyDetail({
           </AnimatePresence>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
         {/* NAV BUTTONS */}
         {images.length > 1 && (
           <>
             <button
               onClick={prevImage}
-              className="absolute left-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
             >
               ←
             </button>
 
             <button
               onClick={nextImage}
-              className="absolute right-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
             >
               →
             </button>
           </>
         )}
 
+        {/* BACK BUTTON */}
+        <button
+          onClick={() => onNavigate('properties')}
+          className="absolute top-6 md:top-10 left-4 md:left-10 z-40 flex items-center gap-2 md:gap-3 text-white text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] uppercase hover:opacity-80 transition"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          {t('propertyDetail.back')}
+        </button>
+
+        {/* TITLE */}
+        <div className="absolute bottom-12 md:bottom-24 left-4 md:left-16 right-4 text-white z-20">
+
+          <motion.h1
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] font-bold leading-[1.05] tracking-tight max-w-4xl"
+          >
+            {property.title}
+          </motion.h1>
+
+          <div className="flex items-center gap-2 mt-4 text-white/80 text-sm md:text-base">
+            <MapPin className="w-4 h-4 md:w-5 md:h-5" />
+            {property.location}
+          </div>
+
+        </div>
+
         {/* THUMBNAILS */}
         {images.length > 0 && (
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-4">
+          <div className="absolute bottom-2 md:bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3 overflow-x-auto px-4 max-w-full">
             {images.map((img, i) => (
-              <motion.img
+              <img
                 key={i}
                 src={img}
                 onClick={() => setImageIndex(i)}
-                whileHover={{ scale: 1.05 }}
-                className={`w-24 h-16 object-cover rounded-lg cursor-pointer transition border-2 ${
+                className={`w-16 h-12 md:w-24 md:h-16 object-cover rounded-md cursor-pointer transition border-2 flex-shrink-0 ${
                   i === imageIndex
                     ? 'border-white'
                     : 'border-transparent opacity-60 hover:opacity-100'
@@ -127,63 +149,36 @@ export default function PropertyDetail({
           </div>
         )}
 
-        {/* BACK BUTTON */}
-        <button
-          onClick={() => onNavigate('properties')}
-          className="absolute top-10 left-10 z-40 flex items-center gap-3 text-white text-xs tracking-[0.4em] uppercase hover:opacity-80 transition"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          {t('propertyDetail.back')}
-        </button>
-
-        {/* TITLE */}
-        <div className="absolute bottom-24 left-16 text-white max-w-4xl z-20">
-          <motion.h1
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="text-6xl xl:text-[90px] font-bold leading-[0.95] tracking-tight"
-          >
-            {property.title}
-          </motion.h1>
-
-          <div className="flex items-center gap-3 mt-6 text-white/80">
-            <MapPin className="w-5 h-5" />
-            {property.location}
-          </div>
-        </div>
-
       </section>
 
       {/* ================= CONTENT ================= */}
-      <section className="py-32">
-        <div className="max-w-[1600px] mx-auto px-12 grid lg:grid-cols-[2fr_1fr] gap-24">
+      <section className="py-16 md:py-24 lg:py-32">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 grid lg:grid-cols-[2fr_1fr] gap-12 lg:gap-24">
 
-          {/* MAIN CONTENT */}
+          {/* MAIN */}
           <div>
 
-            <div className="grid grid-cols-3 gap-20 pb-16 border-b border-blue-950/10">
+            {/* METRICS */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 pb-12 border-b border-blue-950/10">
               <LuxuryMetric icon={Bed} value={property.bedrooms} label="Suites" />
               <LuxuryMetric icon={Bath} value={property.bathrooms} label="Salles d'eau" />
               <LuxuryMetric icon={Maximize} value={property.surface} label="M²" />
             </div>
 
-            <div className="pt-20">
-              <LuxuryTitle>
-                {t('propertyDetail.presentation')}
-              </LuxuryTitle>
+            {/* PRESENTATION */}
+            <div className="pt-12 md:pt-20">
+              <LuxuryTitle>{t('propertyDetail.presentation')}</LuxuryTitle>
 
-              <p className="text-blue-950/70 text-xl leading-relaxed max-w-3xl">
+              <p className="text-blue-950/70 text-base md:text-lg lg:text-xl leading-relaxed max-w-3xl">
                 {property.description}
               </p>
             </div>
 
-            <div className="pt-24">
-              <LuxuryTitle>
-                {t('propertyDetail.features')}
-              </LuxuryTitle>
+            {/* FEATURES */}
+            <div className="pt-16 md:pt-24">
+              <LuxuryTitle>{t('propertyDetail.features')}</LuxuryTitle>
 
-              <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
+              <div className="grid sm:grid-cols-2 gap-6 max-w-3xl">
                 {features.map((feature, i) => (
                   <motion.div
                     key={i}
@@ -205,19 +200,19 @@ export default function PropertyDetail({
           <motion.aside
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="bg-gradient-to-br from-blue-950 to-blue-900 text-white p-12 sticky top-32 h-fit rounded-2xl shadow-[0_30px_80px_rgba(0,0,0,0.25)]"
+            className="bg-gradient-to-br from-blue-950 to-blue-900 text-white p-6 md:p-10 lg:p-12 rounded-2xl shadow-[0_30px_80px_rgba(0,0,0,0.25)] lg:sticky lg:top-32 h-fit"
           >
-            <div className="pb-10 border-b border-white/20">
-              <div className="text-xs tracking-[0.5em] uppercase text-white/60">
+            <div className="pb-8 border-b border-white/20">
+              <div className="text-xs tracking-[0.4em] uppercase text-white/60">
                 {t('propertyDetail.price')}
               </div>
 
-              <div className="text-6xl font-bold mt-6 tracking-tight">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 tracking-tight">
                 {formatPrice(property.price)}
               </div>
             </div>
 
-            <div className="pt-12 space-y-6">
+            <div className="pt-8 space-y-4">
               <PremiumActionButton
                 icon={MessageCircle}
                 label={t('propertyDetail.whatsapp')}
@@ -252,11 +247,11 @@ export default function PropertyDetail({
 function LuxuryMetric({ icon: Icon, value, label }: any) {
   return (
     <div>
-      <Icon className="w-8 h-8 text-blue-950/40 mb-6" />
-      <div className="text-4xl font-semibold tracking-tight">
+      <Icon className="w-6 md:w-8 h-6 md:h-8 text-blue-950/40 mb-4 md:mb-6" />
+      <div className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight">
         {value}
       </div>
-      <div className="text-xs uppercase tracking-[0.4em] text-blue-950/50 mt-2">
+      <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] text-blue-950/50 mt-2">
         {label}
       </div>
     </div>
@@ -265,7 +260,7 @@ function LuxuryMetric({ icon: Icon, value, label }: any) {
 
 function LuxuryTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-3xl font-semibold tracking-tight mb-10">
+    <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold tracking-tight mb-6 md:mb-10">
       {children}
     </h2>
   )
@@ -280,7 +275,7 @@ function PremiumActionButton({
 }: any) {
 
   const base =
-    "w-full flex items-center justify-between px-6 py-5 rounded-xl text-sm tracking-widest uppercase transition-all duration-300"
+    "w-full flex items-center justify-between px-5 md:px-6 py-4 md:py-5 rounded-xl text-xs md:text-sm tracking-widest uppercase transition-all duration-300"
 
   const styles: any = {
     light:
@@ -294,7 +289,7 @@ function PremiumActionButton({
   const content = (
     <motion.div whileHover={{ x: 5 }} className={`${base} ${styles[variant]}`}>
       <div className="flex items-center gap-3">
-        <Icon className="w-5 h-5" />
+        <Icon className="w-4 h-4 md:w-5 md:h-5" />
         {label}
       </div>
       <span>→</span>
