@@ -209,7 +209,6 @@ export default function Home({ onNavigate }: HomeProps) {
       {/* ================= OPPORTUNITÉS LUXE ================= */}
       {/* ================= OPPORTUNITÉS SIGNATURE ================= */}
 {/* ================= COLLECTION SIGNATURE ================= */}
-{/* ================= COLLECTION SIGNATURE ================= */}
 <section className="py-24 md:py-36 bg-[#f6f7f5] overflow-hidden">
   <div className="max-w-[1600px] mx-auto px-6 md:px-10">
 
@@ -226,7 +225,7 @@ export default function Home({ onNavigate }: HomeProps) {
       <div className="w-16 md:w-24 h-[2px] bg-red-600 mx-auto mt-6 md:mt-8" />
     </div>
 
-    {/* GRID RESPONSIVE */}
+    {/* GRID */}
     <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-16">
       {featuredProperties.map((property, index) => (
         <motion.div
@@ -256,14 +255,14 @@ export default function Home({ onNavigate }: HomeProps) {
             <div className="absolute inset-0 bg-gradient-to-t 
                             from-black/85 via-black/40 to-transparent" />
 
-            {/* BADGE LOCATION */}
+            {/* BADGE */}
             <div className="absolute top-4 left-4 md:top-8 md:left-8
                             bg-white/10 backdrop-blur-xl
                             border border-white/20
                             text-white text-[9px] md:text-[10px]
                             tracking-[0.3em] uppercase
                             px-4 md:px-6 py-2 rounded-full">
-              Local à louer
+              À louer
             </div>
 
             {/* PRICE */}
@@ -279,7 +278,7 @@ export default function Home({ onNavigate }: HomeProps) {
               }).format(property.price)} / mois
             </div>
 
-            {/* CONTENT BOTTOM */}
+            {/* CONTENT */}
             <div className="absolute bottom-6 md:bottom-12 left-6 md:left-12 right-6 md:right-12">
 
               {/* LOCATION + SURFACE */}
@@ -298,26 +297,28 @@ export default function Home({ onNavigate }: HomeProps) {
                 {property.title}
               </h3>
 
-              {/* NEW: PROPERTY DETAILS */}
-              <div className="flex items-center gap-6 mt-4 text-white/80 text-xs md:text-sm">
+              {/* CONDITIONNEL : UNIQUEMENT VILLA / APPARTEMENT */}
+              {(property.category === "villa" || property.category === "appartement") && (
+                <div className="flex items-center gap-6 mt-4 text-white/80 text-xs md:text-sm">
 
-                <span className="flex items-center gap-2">
-                  <Bed className="w-4 h-4" />
-                  {property.bedrooms} Chambres
-                </span>
+                  <span className="flex items-center gap-2">
+                    <Bed className="w-4 h-4" />
+                    {property.bedrooms}
+                  </span>
 
-                <span className="flex items-center gap-2">
-                  <Bath className="w-4 h-4" />
-                  {property.bathrooms} SDB
-                </span>
+                  <span className="flex items-center gap-2">
+                    <Bath className="w-4 h-4" />
+                    {property.bathrooms}
+                  </span>
 
-              </div>
+                </div>
+              )}
 
               {/* CTA */}
               <div className="mt-6 flex items-center gap-3 text-white/70
                               group-hover:text-white transition duration-500">
                 <span className="uppercase tracking-[0.35em] text-[10px] md:text-xs">
-                  Voir le local
+                  Voir le bien
                 </span>
                 <span className="text-lg group-hover:translate-x-3 transition duration-500">
                   →
@@ -330,9 +331,8 @@ export default function Home({ onNavigate }: HomeProps) {
       ))}
     </div>
 
-    {/* ULTRA PREMIUM BUTTON */}
+    {/* BUTTON */}
     <div className="flex justify-center mt-20 md:mt-28">
-
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.97 }}
@@ -355,18 +355,18 @@ export default function Home({ onNavigate }: HomeProps) {
                          transition-all duration-[1300ms] ease-out" />
 
         <span className="relative z-10 flex items-center gap-4">
-          Voir tous nos locaux à louer
+          Voir tous les biens
           <span className="text-lg transition-all duration-500 group-hover:translate-x-3">
             →
           </span>
         </span>
 
       </motion.button>
-
     </div>
 
   </div>
 </section>
+
 
 
 
