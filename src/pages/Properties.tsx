@@ -106,16 +106,19 @@ export default function Properties({ onNavigate }: any) {
       </section>
 
       {/* ================= PROPERTIES ================= */}
-  <section className="py-24 md:py-32 bg-blue-950">
-
+ <section className="py-24 md:py-32 bg-blue-950">
   <div className="max-w-[1600px] mx-auto px-6">
 
-    <div className="grid 
-                    grid-cols-1 
-                    sm:grid-cols-2 
-                    lg:grid-cols-3 
-                    xl:grid-cols-4 
-                    gap-10">
+    <div
+      className="
+        grid 
+        grid-cols-1 
+        sm:grid-cols-2 
+        lg:grid-cols-3 
+        xl:grid-cols-4 
+        gap-10
+      "
+    >
 
       {filteredProperties.map((property) => (
 
@@ -129,18 +132,20 @@ export default function Properties({ onNavigate }: any) {
           className="group cursor-pointer"
         >
 
-          <div className="
-            bg-blue-900/40
-            backdrop-blur-xl
-            rounded-2xl
-            overflow-hidden
-            border border-white/10
-            transition-all duration-500
-            shadow-[0_15px_50px_rgba(0,0,0,0.6)]
-            group-hover:-translate-y-3
-            group-hover:shadow-[0_25px_80px_rgba(0,0,0,0.8)]
-            group-hover:border-red-600/40
-          ">
+          <div
+            className="
+              bg-gradient-to-b from-blue-900/40 to-blue-950/60
+              backdrop-blur-xl
+              rounded-2xl
+              overflow-hidden
+              border border-white/10
+              transition-all duration-500
+              shadow-[0_15px_50px_rgba(0,0,0,0.6)]
+              group-hover:-translate-y-3
+              group-hover:shadow-[0_25px_80px_rgba(0,0,0,0.8)]
+              group-hover:border-red-600/40
+            "
+          >
 
             {/* IMAGE */}
             <div className="relative overflow-hidden">
@@ -148,74 +153,95 @@ export default function Properties({ onNavigate }: any) {
               <img
                 src={property.images?.[0]}
                 alt={property.title}
-                className="w-full h-[260px] object-cover 
-                           transition duration-700 
-                           group-hover:scale-110"
+                className="
+                  w-full h-[260px] object-cover
+                  transition duration-700
+                  group-hover:scale-110
+                "
               />
 
               {/* PRICE BADGE */}
-              <div className="absolute top-4 right-4 
-                              bg-gradient-to-r from-red-700 via-red-600 to-red-700
-                              text-white text-sm font-semibold
-                              px-4 py-2 rounded-full
-                              shadow-[0_10px_30px_rgba(220,38,38,0.6)]
-                              transition duration-500
-                              group-hover:scale-110">
+              <div
+                className="
+                  absolute top-4 right-4
+                  bg-gradient-to-r from-red-700 via-red-600 to-red-700
+                  text-white text-sm font-semibold
+                  px-4 py-2 rounded-full
+                  shadow-[0_10px_30px_rgba(220,38,38,0.6)]
+                  transition duration-500
+                  group-hover:scale-110
+                "
+              >
                 {formatPrice(property.price)}
               </div>
 
               {/* STATUS */}
-              <div className="absolute top-4 left-4 
-                              backdrop-blur-xl bg-white/10 border border-white/20
-                              text-white text-[10px] tracking-[0.3em]
-                              uppercase px-4 py-2 rounded-full">
+              <div
+                className="
+                  absolute top-4 left-4
+                  backdrop-blur-xl bg-white/10 border border-white/20
+                  text-white text-[10px] tracking-[0.3em]
+                  uppercase px-4 py-2 rounded-full
+                "
+              >
                 À louer
               </div>
+
+              {/* DARK OVERLAY */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
             </div>
 
             {/* CONTENT */}
-            <div className="p-6 space-y-4 text-white">
+            <div className="p-6 space-y-5 text-white">
 
               <div className="text-xs tracking-[0.3em] text-white/40 uppercase">
                 {t(`properties.filters.${property.type}`)}
               </div>
 
-              <h3 className="text-lg font-semibold 
-                             transition duration-300 
-                             group-hover:text-red-500">
+              <h3
+                className="
+                  text-lg font-semibold
+                  transition duration-300
+                  group-hover:text-red-500
+                "
+              >
                 {property.title}
               </h3>
 
               <div className="flex items-center gap-2 text-white/60 text-sm">
-                <MapPin className="w-4 h-4" />
+                <MapPin className="w-4 h-4 text-red-500" />
                 {property.location}
               </div>
 
-              <div className="flex justify-between pt-4 border-t border-white/10 text-white/70 text-sm">
+              {/* METRICS */}
+              <div className="flex justify-between pt-4 border-t border-white/10">
 
                 {(property.type === "villa" || property.type === "appartement") && (
-                  <>
+                  <div className="flex gap-6">
                     {property.bedrooms && (
-                      <div className="flex items-center gap-1">
-                        <Bed className="w-4 h-4" />
-                        {property.bedrooms}
-                      </div>
+                      <Metric
+                        icon={Bed}
+                        value={property.bedrooms}
+                        label="Chambres"
+                      />
                     )}
 
                     {property.bathrooms && (
-                      <div className="flex items-center gap-1">
-                        <Bath className="w-4 h-4" />
-                        {property.bathrooms}
-                      </div>
+                      <Metric
+                        icon={Bath}
+                        value={property.bathrooms}
+                        label="SDB"
+                      />
                     )}
-                  </>
+                  </div>
                 )}
 
-                <div className="flex items-center gap-1">
-                  <Maximize className="w-4 h-4" />
-                  {property.surface} m²
-                </div>
+                <Metric
+                  icon={Maximize}
+                  value={property.surface}
+                  label="m²"
+                />
 
               </div>
 
@@ -230,7 +256,6 @@ export default function Properties({ onNavigate }: any) {
     </div>
 
   </div>
-
 </section>
 
 
@@ -242,7 +267,13 @@ export default function Properties({ onNavigate }: any) {
 
 /* ================= METRIC ================= */
 
-function Metric ({ icon: Icon, value, label }: any) {
+type MetricProps = {
+  icon: React.ElementType
+  value: string | number
+  label: string
+}
+
+function Metric({ icon: Icon, value, label }: MetricProps) {
   return (
     <div className="flex items-center gap-3 text-white/80">
       <Icon className="w-5 h-5 text-blue-400" />
@@ -253,3 +284,5 @@ function Metric ({ icon: Icon, value, label }: any) {
     </div>
   )
 }
+
+
