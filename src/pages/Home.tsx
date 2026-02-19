@@ -6,7 +6,7 @@ import {
   Briefcase,
   MapPin,  Bed, Bath,
 } from 'lucide-react'
-import Button from '../components/Button'
+//import Button from '../components/Button'
 import { properties } from '../data/properties'
 
 interface HomeProps {
@@ -21,7 +21,7 @@ export default function Home({ onNavigate }: HomeProps) {
     <div className="bg-[#f6f7f5] text-blue-950 overflow-hidden">
 
       {/* ================= HERO CINEMATIC ================= */}
-     <section className="relative min-h-screen flex items-center overflow-hidden">
+     <section className="relative min-h-[100svh] lg:min-h-screen flex items-center overflow-hidden">
 
   {/* IMAGE */}
   <motion.img
@@ -35,12 +35,12 @@ export default function Home({ onNavigate }: HomeProps) {
   {/* OVERLAY */}
   <div className="absolute inset-0 bg-gradient-to-b from-blue-950/95 via-blue-950/85 to-[#0b1d3a]" />
 
-  <div className="relative z-10 w-full max-w-[1500px] mx-auto 
-                  px-6 sm:px-10 lg:px-12
-                  grid lg:grid-cols-2 
-                  gap-16 lg:gap-28 
-                  items-center 
-                  pt-32 sm:pt-40">
+  <div className="relative z-10 w-full max-w-[1600px] mx-auto
+                  px-5 sm:px-8 md:px-12 lg:px-16
+                  grid grid-cols-1 lg:grid-cols-2
+                  gap-14 lg:gap-24 xl:gap-32
+                  items-center
+                  pt-28 sm:pt-36 lg:pt-40 pb-20">
 
     {/* ================= LEFT ================= */}
     <motion.div
@@ -50,13 +50,16 @@ export default function Home({ onNavigate }: HomeProps) {
       className="text-white text-center lg:text-left"
     >
 
-      <span className="uppercase tracking-[0.4em] sm:tracking-[0.6em] text-blue-300 text-[10px] sm:text-xs">
+      <span className="uppercase tracking-[0.35em] sm:tracking-[0.5em] 
+                       text-blue-300 text-[9px] sm:text-xs">
         {t('home.hero.tagline')}
       </span>
 
-      <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-[82px] 
-                     font-light leading-[1.05] 
-                     mt-8 sm:mt-12 tracking-tight">
+      <h1 className="text-3xl sm:text-5xl md:text-6xl 
+                     lg:text-6xl xl:text-[78px] 2xl:text-[92px]
+                     font-light leading-[1.1]
+                     mt-6 sm:mt-10 lg:mt-12
+                     tracking-tight">
         {t('home.hero.title1')}
         <br />
         <span className="font-semibold bg-gradient-to-r 
@@ -66,34 +69,35 @@ export default function Home({ onNavigate }: HomeProps) {
         </span>
       </h1>
 
-      <p className="text-blue-200 mt-8 sm:mt-12 
-                    max-w-xl mx-auto lg:mx-0
-                    text-base sm:text-lg 
+      <p className="text-blue-200 mt-6 sm:mt-8 lg:mt-10
+                    max-w-md sm:max-w-xl lg:max-w-lg
+                    mx-auto lg:mx-0
+                    text-sm sm:text-base lg:text-lg
                     leading-relaxed">
         {t('home.hero.description')}
       </p>
 
       {/* BUTTONS */}
-      <div className="mt-12 sm:mt-16 lg:mt-20 
-                      flex flex-col sm:flex-row 
-                      justify-center lg:justify-start 
-                      gap-6 sm:gap-8">
+      <div className="mt-10 sm:mt-12 lg:mt-16
+                      flex flex-col sm:flex-row
+                      justify-center lg:justify-start
+                      gap-5 sm:gap-6">
 
         {/* ===== EXPLORER ===== */}
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
           onClick={() => onNavigate('properties')}
-          className="relative group overflow-hidden 
-                     px-8 sm:px-12 py-4 sm:py-6 
-                     rounded-2xl 
+          className="relative group overflow-hidden
+                     px-8 sm:px-10 lg:px-12
+                     py-4 sm:py-5
+                     rounded-xl sm:rounded-2xl
                      bg-gradient-to-r from-red-600 via-red-700 to-red-800
-                     text-white uppercase tracking-[0.3em] sm:tracking-[0.35em] 
+                     text-white uppercase tracking-[0.25em] sm:tracking-[0.35em]
                      text-[10px] sm:text-xs
                      shadow-[0_20px_60px_rgba(220,38,38,0.45)]
                      transition-all duration-500"
         >
-
           <span className="absolute inset-0 bg-red-400/10 opacity-0 group-hover:opacity-100 transition duration-500" />
 
           <span className="absolute -left-40 top-0 w-56 h-full
@@ -102,13 +106,12 @@ export default function Home({ onNavigate }: HomeProps) {
                            group-hover:left-[140%]
                            transition-all duration-[1300ms] ease-out" />
 
-          <span className="relative z-10 flex items-center justify-center gap-3 sm:gap-4">
+          <span className="relative z-10 flex items-center justify-center gap-3">
             Explorer
-            <span className="text-lg transition-all duration-500 group-hover:translate-x-3">
+            <span className="text-lg transition-all duration-500 group-hover:translate-x-2">
               →
             </span>
           </span>
-
         </motion.button>
 
         {/* ===== CONTACT ===== */}
@@ -116,38 +119,38 @@ export default function Home({ onNavigate }: HomeProps) {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
           onClick={() => onNavigate('contact')}
-          className="relative group overflow-hidden 
-                     px-8 sm:px-12 py-4 sm:py-6 
-                     rounded-2xl 
+          className="relative group overflow-hidden
+                     px-8 sm:px-10 lg:px-12
+                     py-4 sm:py-5
+                     rounded-xl sm:rounded-2xl
                      border border-white/30
                      bg-white/10 backdrop-blur-xl
-                     text-white uppercase tracking-[0.3em] sm:tracking-[0.35em] 
+                     text-white uppercase tracking-[0.25em] sm:tracking-[0.35em]
                      text-[10px] sm:text-xs
                      shadow-[0_20px_60px_rgba(0,0,0,0.25)]
                      transition-all duration-500"
         >
-
           <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition duration-500" />
 
-          <span className="relative z-10 flex items-center justify-center gap-3 sm:gap-4 
+          <span className="relative z-10 flex items-center justify-center gap-3
                            group-hover:text-blue-950 transition duration-500">
             Contact
             <span className="text-lg transition-transform duration-500 group-hover:translate-x-2">
               →
             </span>
           </span>
-
         </motion.button>
 
       </div>
     </motion.div>
 
     {/* ================= RIGHT STATS ================= */}
-    <div className="hidden md:grid lg:grid grid-cols-2 gap-4 sm:gap-6 mt-12 lg:mt-0">
+    <div className="grid grid-cols-2 gap-4 sm:gap-6
+                    mt-14 lg:mt-0">
 
       {[
-        { key: 'assets', value: '300+' },
-        { key: 'clients', value: '500+' },
+        { key: 'assets', value: '50+' },
+        { key: 'clients', value: '90+' },
         { key: 'experience', value: '10+' },
         { key: 'zone', value: t('home.stats.zoneValue') }
       ].map((item, i) => (
@@ -155,17 +158,20 @@ export default function Home({ onNavigate }: HomeProps) {
           key={i}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: i * 0.2 }}
-          className="bg-white/5 backdrop-blur-xl 
-                     border border-white/10 
-                     p-6 sm:p-8 
-                     text-white rounded-2xl 
-                     shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
+          transition={{ delay: i * 0.15 }}
+          className="bg-white/5 backdrop-blur-xl
+                     border border-white/10
+                     p-5 sm:p-6 lg:p-8
+                     text-white rounded-xl sm:rounded-2xl
+                     shadow-[0_20px_60px_rgba(0,0,0,0.25)]
+                     hover:bg-white/10
+                     transition duration-500"
         >
-          <div className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
+          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight">
             {item.value}
           </div>
-          <p className="text-[10px] sm:text-xs tracking-[0.35em] text-blue-300 mt-3 uppercase">
+          <p className="text-[9px] sm:text-xs tracking-[0.3em]
+                        text-blue-300 mt-2 sm:mt-3 uppercase">
             {t(`home.stats.${item.key}`)}
           </p>
         </motion.div>
@@ -298,7 +304,7 @@ export default function Home({ onNavigate }: HomeProps) {
               </h3>
 
               {/* CONDITIONNEL : UNIQUEMENT VILLA / APPARTEMENT */}
-              {(property.category === "villa" || property.category === "appartement") && (
+              {(property.type === "villa" || property.type === "appartement") && (
                 <div className="flex items-center gap-6 mt-4 text-white/80 text-xs md:text-sm">
 
                   <span className="flex items-center gap-2">

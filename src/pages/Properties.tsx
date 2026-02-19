@@ -106,75 +106,136 @@ export default function Properties({ onNavigate }: any) {
       </section>
 
       {/* ================= PROPERTIES ================= */}
-      <section className="py-24 md:py-32">
+  <section className="py-24 md:py-32 bg-blue-950">
 
-        <div className="max-w-[1500px] mx-auto px-6 space-y-28">
+  <div className="max-w-[1600px] mx-auto px-6">
 
-          <AnimatePresence>
-            {filteredProperties.map((property) => (
-              <motion.div
-                key={property.id}
-                initial={{ opacity: 0, y: 120 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1.2 }}
-                onClick={() => onNavigate("property", property.id)}
-                className="group cursor-pointer"
-              >
+    <div className="grid 
+                    grid-cols-1 
+                    sm:grid-cols-2 
+                    lg:grid-cols-3 
+                    xl:grid-cols-4 
+                    gap-10">
 
-                <div className="relative overflow-hidden rounded-3xl shadow-[0_40px_120px_rgba(0,0,0,0.7)]">
+      {filteredProperties.map((property) => (
 
-                  <motion.img
-                    src={property.images?.[0]}
-                    alt={property.title}
-                    className="w-full h-[400px] sm:h-[500px] md:h-[650px] xl:h-[750px] object-cover transition duration-[2000ms] ease-out group-hover:scale-110"
-                  />
+        <motion.div
+          key={property.id}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          onClick={() => onNavigate("property", property.id)}
+          className="group cursor-pointer"
+        >
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+          <div className="
+            bg-blue-900/40
+            backdrop-blur-xl
+            rounded-2xl
+            overflow-hidden
+            border border-white/10
+            transition-all duration-500
+            shadow-[0_15px_50px_rgba(0,0,0,0.6)]
+            group-hover:-translate-y-3
+            group-hover:shadow-[0_25px_80px_rgba(0,0,0,0.8)]
+            group-hover:border-red-600/40
+          ">
 
-                  <div className="absolute bottom-0 p-6 md:p-12 w-full">
+            {/* IMAGE */}
+            <div className="relative overflow-hidden">
 
-                    <div className="flex justify-between items-center text-xs tracking-[0.4em] text-white/50 uppercase mb-6">
-                      <span>{t(`properties.filters.${property.type}`)}</span>
-                      <span className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4" />
-                        {property.location}
-                      </span>
-                    </div>
+              <img
+                src={property.images?.[0]}
+                alt={property.title}
+                className="w-full h-[260px] object-cover 
+                           transition duration-700 
+                           group-hover:scale-110"
+              />
 
-                    <h3 className="text-2xl md:text-4xl xl:text-5xl font-semibold mb-6">
-                      {property.title}
-                    </h3>
+              {/* PRICE BADGE */}
+              <div className="absolute top-4 right-4 
+                              bg-gradient-to-r from-red-700 via-red-600 to-red-700
+                              text-white text-sm font-semibold
+                              px-4 py-2 rounded-full
+                              shadow-[0_10px_30px_rgba(220,38,38,0.6)]
+                              transition duration-500
+                              group-hover:scale-110">
+                {formatPrice(property.price)}
+              </div>
 
-                    <div className="flex flex-wrap gap-8 mb-8">
+              {/* STATUS */}
+              <div className="absolute top-4 left-4 
+                              backdrop-blur-xl bg-white/10 border border-white/20
+                              text-white text-[10px] tracking-[0.3em]
+                              uppercase px-4 py-2 rounded-full">
+                À louer
+              </div>
 
-                      {property.bedrooms && (
-                        <Metric icon={Bed} value={property.bedrooms} label="Suites" />
-                      )}
+            </div>
 
-                      {property.bathrooms && (
-                        <Metric icon={Bath} value={property.bathrooms} label="SDB" />
-                      )}
+            {/* CONTENT */}
+            <div className="p-6 space-y-4 text-white">
 
-                      <Metric icon={Maximize} value={property.surface} label="M²" />
+              <div className="text-xs tracking-[0.3em] text-white/40 uppercase">
+                {t(`properties.filters.${property.type}`)}
+              </div>
 
-                    </div>
+              <h3 className="text-lg font-semibold 
+                             transition duration-300 
+                             group-hover:text-red-500">
+                {property.title}
+              </h3>
 
-                    <div className="text-3xl md:text-4xl font-bold text-white">
-                      {formatPrice(property.price)}
-                    </div>
+              <div className="flex items-center gap-2 text-white/60 text-sm">
+                <MapPin className="w-4 h-4" />
+                {property.location}
+              </div>
 
-                  </div>
+              <div className="flex justify-between pt-4 border-t border-white/10 text-white/70 text-sm">
 
+                {(property.type === "villa" || property.type === "appartement") && (
+                  <>
+                    {property.bedrooms && (
+                      <div className="flex items-center gap-1">
+                        <Bed className="w-4 h-4" />
+                        {property.bedrooms}
+                      </div>
+                    )}
+
+                    {property.bathrooms && (
+                      <div className="flex items-center gap-1">
+                        <Bath className="w-4 h-4" />
+                        {property.bathrooms}
+                      </div>
+                    )}
+                  </>
+                )}
+
+                <div className="flex items-center gap-1">
+                  <Maximize className="w-4 h-4" />
+                  {property.surface} m²
                 </div>
 
-              </motion.div>
-            ))}
-          </AnimatePresence>
+              </div>
 
-        </div>
+            </div>
 
-      </section>
+          </div>
+
+        </motion.div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
     </div>
   )
 }
