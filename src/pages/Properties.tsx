@@ -1,5 +1,5 @@
 import { useState, useRef } from "react"
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
+import { motion,  useScroll, useTransform } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { Bed, Bath, Maximize, MapPin } from "lucide-react"
 import { properties } from "../data/properties"
@@ -242,7 +242,7 @@ export default function Properties({ onNavigate }: any) {
 
 /* ================= METRIC ================= */
 
-function Metric({ icon: Icon, value, label }: any) {
+function Metric ({ icon: Icon, value, label }: any) {
   return (
     <div className="flex items-center gap-3 text-white/80">
       <Icon className="w-5 h-5 text-blue-400" />
