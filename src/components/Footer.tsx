@@ -148,7 +148,7 @@ export default function Footer() {
                 className="flex items-center justify-center lg:justify-start gap-3 hover:text-white transition duration-300"
               >
                 <Mail className="w-4 h-4" />
-                contact@absimmo.sn
+                elhadjisane1990@gmail.com
               </a>
 
               <div className="flex items-center justify-center lg:justify-start gap-3">

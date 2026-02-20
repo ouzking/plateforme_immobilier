@@ -106,19 +106,10 @@ export default function Properties({ onNavigate }: any) {
       </section>
 
       {/* ================= PROPERTIES ================= */}
- <section className="py-24 md:py-32 bg-blue-950">
-  <div className="max-w-[1600px] mx-auto px-6">
+<section className="py-24 md:py-32 bg-blue-950">
+  <div className="max-w-[1400px] mx-auto px-6">
 
-    <div
-      className="
-        grid 
-        grid-cols-1 
-        sm:grid-cols-2 
-        lg:grid-cols-3 
-        xl:grid-cols-4 
-        gap-10
-      "
-    >
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
       {filteredProperties.map((property) => (
 
@@ -160,7 +151,7 @@ export default function Properties({ onNavigate }: any) {
                 "
               />
 
-              {/* PRICE BADGE */}
+              {/* PRICE */}
               <div
                 className="
                   absolute top-4 right-4
@@ -187,7 +178,7 @@ export default function Properties({ onNavigate }: any) {
                 À louer
               </div>
 
-              {/* DARK OVERLAY */}
+              {/* OVERLAY */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
             </div>

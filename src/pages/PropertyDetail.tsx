@@ -65,91 +65,94 @@ export default function PropertyDetail({
   return (
     <div className="bg-white text-blue-950 pt-16 md:pt-20">
 
-      {/* ================= HERO ================= */}
-      <section className="relative h-[60vh] sm:h-[75vh] md:h-[85vh] lg:h-[90vh] overflow-hidden bg-black">
+    {/* ================= HERO ================= */}
+<section className="relative h-[60vh] sm:h-[75vh] md:h-[85vh] lg:h-[90vh] overflow-hidden bg-black">
 
-        {images.length > 0 && (
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={imageIndex}
-              src={images[imageIndex]}
-              initial={{ scale: 1.1, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8 }}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </AnimatePresence>
-        )}
+  {images.length > 0 && (
+    <AnimatePresence mode="wait">
+      <motion.img
+  key={imageIndex}
+  src={images[imageIndex]}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  className="absolute inset-0 w-full h-full object-cover brightness-110 contrast-110 saturate-110"
+/>
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+    </AnimatePresence>
+  )}
 
-        {/* NAV BUTTONS */}
-        {images.length > 1 && (
-          <>
-            <button
-              onClick={prevImage}
-              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
-            >
-              ←
-            </button>
+  {/* OVERLAY PLUS LÉGER */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
-            <button
-              onClick={nextImage}
-              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
-            >
-              →
-            </button>
-          </>
-        )}
+  {/* NAV BUTTONS */}
+  {images.length > 1 && (
+    <>
+      <button
+        onClick={prevImage}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
+      >
+        ←
+      </button>
 
-        {/* BACK BUTTON */}
-        <button
-          onClick={() => onNavigate('properties')}
-          className="absolute top-6 md:top-10 left-4 md:left-10 z-40 flex items-center gap-2 md:gap-3 text-white text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] uppercase hover:opacity-80 transition"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          {t('propertyDetail.back')}
-        </button>
+      <button
+        onClick={nextImage}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 backdrop-blur-md border border-white/20 text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-white/20 transition"
+      >
+        →
+      </button>
+    </>
+  )}
 
-        {/* TITLE */}
-        <div className="absolute bottom-12 md:bottom-24 left-4 md:left-16 right-4 text-white z-20">
+  {/* BACK BUTTON */}
+  <button
+    onClick={() => onNavigate('properties')}
+    className="absolute top-6 md:top-10 left-4 md:left-10 z-40 flex items-center gap-2 md:gap-3 text-white text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] uppercase hover:opacity-80 transition"
+  >
+    <ArrowLeft className="w-4 h-4" />
+    {t('propertyDetail.back')}
+  </button>
 
-          <motion.h1
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] font-bold leading-[1.05] tracking-tight max-w-4xl"
-          >
-            {property.title}
-          </motion.h1>
+  {/* TITLE */}
+  <div className="absolute bottom-12 md:bottom-24 left-4 md:left-16 right-4 text-white z-20">
 
-          <div className="flex items-center gap-2 mt-4 text-white/80 text-sm md:text-base">
-            <MapPin className="w-4 h-4 md:w-5 md:h-5" />
-            {property.location}
-          </div>
+    <motion.h1
+      initial={{ y: 40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] font-bold leading-[1.05] tracking-tight max-w-4xl"
+    >
+      {property.title}
+    </motion.h1>
 
-        </div>
+    <div className="flex items-center gap-2 mt-4 text-white/90 text-sm md:text-base">
+      <MapPin className="w-4 h-4 md:w-5 md:h-5" />
+      {property.location}
+    </div>
 
-        {/* THUMBNAILS */}
-        {images.length > 0 && (
-          <div className="absolute bottom-2 md:bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3 overflow-x-auto px-4 max-w-full">
-            {images.map((img, i) => (
-              <img
-                key={i}
-                src={img}
-                onClick={() => setImageIndex(i)}
-                className={`w-16 h-12 md:w-24 md:h-16 object-cover rounded-md cursor-pointer transition border-2 flex-shrink-0 ${
-                  i === imageIndex
-                    ? 'border-white'
-                    : 'border-transparent opacity-60 hover:opacity-100'
-                }`}
-              />
-            ))}
-          </div>
-        )}
+  </div>
 
-      </section>
+  {/* THUMBNAILS */}
+  {images.length > 0 && (
+    <div className="absolute bottom-2 md:bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3 overflow-x-auto px-4 max-w-full">
+      {images.map((img, i) => (
+        <img
+          key={i}
+          src={img}
+          onClick={() => setImageIndex(i)}
+          className={`w-16 h-12 md:w-24 md:h-16 object-cover rounded-md cursor-pointer transition border-2 flex-shrink-0 ${
+            i === imageIndex
+              ? 'border-white scale-105'
+              : 'border-transparent opacity-70 hover:opacity-100'
+          }`}
+        />
+      ))}
+    </div>
+  )}
+
+</section>
+
 
       {/* ================= CONTENT ================= */}
       <section className="py-16 md:py-24 lg:py-32">

@@ -22,7 +22,7 @@
   "contact": {
     "title": "Contact",
     "call": "Appeler maintenant",
-    "location": "Dakar, Sénégal"
+    "location": "Cité Firdawsi, Keur Massar, Dakar, Sénégal"
   },
   "bottom": {
     "rights": "Tous droits réservés",
@@ -151,7 +151,7 @@
 }
 ,
    "navbar": {
-    "tagline": "Agence Immobilière & Services",
+    "tagline": "Immobilière & Services",
     "menu": {
       "home": "Accueil",
       "properties": "Propriétés",
